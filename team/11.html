@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <title>Ketan Shah – Intellidea</title>
+
+  <style>
+    :root {
+      --brand-blue: #2C466D;
+      --brand-yellow: #F9C100;
+    }
+
+    body { padding-top: 80px; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+
+<body class="bg-white scroll-smooth text-[var(--brand-blue)]">
+
+
+<!-- ======================================================
+     INTELLIDEA NAVBAR
+======================================================= -->
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 bg-[var(--brand-blue)] shadow-md h-20">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="intellidea.png" alt="Intellidea" class="h-10 md:h-14 w-auto object-contain" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav id="desktopNav" class="hidden lg:flex items-center gap-10"></nav>
+
+      <!-- Mobile Toggle -->
+      <button id="mobile-menu-btn" class="lg:hidden text-white">
+        <i class="fas fa-bars text-3xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-[var(--brand-blue)] border-t border-white/20 absolute w-full left-0 top-20">
+    <div id="mobileNav" class="flex flex-col p-4 space-y-4"></div>
+  </div>
+</header>
+
+<script>
+  (function () {
+    const menuItems = [
+      { name: "Home", href: "../index.html" },
+      { name: "Solutions & Services", href: "../index.html#offerings" },
+      { name: "About Us", href: "../index.html#aboutus" },
+      { name: "Contact", href: "../index.html#contact" },
+      { name: "Resources", href: "../index.html#resources" }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const desktopNav = document.getElementById("desktopNav");
+      const mobileNav = document.getElementById("mobileNav");
+
+      desktopNav.innerHTML =
+        menuItems
+          .map(
+            (i) =>
+              `<a href="${i.href}" class="text-lg font-semibold text-white hover:text-[var(--brand-yellow)] transition">${i.name}</a>`
+          )
+          .join("") +
+        `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+           class="bg-[var(--brand-yellow)] hover:bg-[#ffcd36] text-[var(--brand-blue)] font-bold text-sm py-2.5 px-6 rounded-sm shadow-lg transition transform hover:scale-105">
+          Book an appointment
+        </a>`;
+
+      mobileNav.innerHTML =
+        menuItems
+          .map(
+            (i) =>
+              `<a href="${i.href}" class="text-base font-semibold text-white py-2 border-b border-white/10">${i.name}</a>`
+          )
+          .join("") +
+        `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+           class="bg-[var(--brand-yellow)] text-[var(--brand-blue)] font-bold py-3 text-center rounded mt-2">
+          Book an appointment
+        </a>`;
+    });
+
+    const btn = document.getElementById("mobile-menu-btn");
+    const menu = document.getElementById("mobile-menu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  })();
+</script>
+
+
+
+
+
+<!-- ======================================================
+     MAIN BIO SECTION
+======================================================= -->
+<section class="bg-gray-50 px-6 sm:px-12 py-12">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+
+    <!-- LEFT TEXT CONTENT -->
+    <div>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">Ketan Shah</h1>
+      <p class="text-sm sm:text-base text-gray-600 mb-6">Associate – Cybersecurity Governance, Compliance & ISO Specialist</p>
+
+      <div class="space-y-4 leading-relaxed text-base">
+
+        <p>
+          With over <strong>24 years of experience</strong>, including <strong>18 years</strong> dedicated to designing and executing 
+          cybersecurity and management systems, Ketan Shah is a seasoned expert in <strong>information security, business continuity, privacy, and service management</strong>.
+          His work spans commercial enterprises, public sector entities, and global organisations.
+        </p>
+
+        <p>
+          He holds a <strong>Master’s degree in Commerce</strong> and is currently pursuing an <strong>LL.B.</strong> His industry-recognized certifications include 
+          <strong>CISA, CDPSE, CIPM, COBIT 2019, CEH</strong>, and multiple ISO Lead Auditor credentials.
+        </p>
+
+        <p>
+          Over the years, Ketan has led cybersecurity initiatives for <strong>digital service providers, financial institutions, telecom companies, 
+          academic bodies, and oil exploration firms</strong> across India, the Middle East, and Saudi Arabia. His expertise includes 
+          <strong>risk evaluation, compliance frameworks, business continuity systems, and information security governance</strong>.
+        </p>
+
+        <p>
+          As an empanelled auditor with reputed certification bodies, he supports audits and delivers accredited Lead Auditor training for:
+        </p>
+
+        <ul class="list-disc ml-5 space-y-1">
+          <li>ISO 27001 – Information Security Management</li>
+          <li>ISO 9001 – Quality Management</li>
+          <li>ISO 20000 – IT Service Management</li>
+          <li>ISO 22301 – Business Continuity</li>
+          <li>ISO 42001 – AI Management Systems</li>
+          <li>ISO 27701 – Privacy Information Management</li>
+        </ul>
+
+        <p>
+          He also designs <strong>customised training programs</strong> to help organisations build robust and effective management systems aligned with global best practices.
+        </p>
+
+        <p>
+          In his previous role at <strong>Network Intelligence (India) Pvt. Ltd.</strong>, Ketan served as Senior Security Consultant and UAE Manager, 
+          leading both <strong>security consulting and business development</strong>.
+        </p>
+
+        <p>
+          His cross-industry experience spans <strong>oil & gas, BFSI, telecom, IT/ITES, BPO/KPO, and engineering</strong>, supporting organisations in:
+        </p>
+
+        <ul class="list-disc ml-5 space-y-1">
+          <li>ISMS & BCMS implementation</li>
+          <li>Internal audits & certification readiness</li>
+          <li>Risk assessments & compliance planning</li>
+          <li>Security control deployment & governance frameworks</li>
+        </ul>
+
+        <p>
+          Ketan continues to help organisations strengthen their security posture, streamline compliance, and build resilient systems that 
+          meet global standards and evolving cyber risks.
+        </p>
+
+      </div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="flex md:justify-end h-[90vh] md:h-[100vh]">
+      <img src="../assets/ketan_shah2.png"
+           alt="Ketan Shah"
+           class="w-full max-w-sm md:max-w-md rounded-lg shadow-lg object-cover object-top" />
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ======================================================
+     FOOTER
+======================================================= -->
+<footer class="bg-[var(--brand-blue)] text-gray-200 py-5 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm">
+
+    <div class="mb-3 sm:mb-0">
+      Copyright – 2025 |
+      <span class="text-white font-medium">Intellidea Consultancy Services Pvt. Ltd.</span>
+    </div>
+
+    <div class="flex space-x-6">
+      <a href="../privacy.html" class="hover:text-[var(--brand-yellow)] transition">Privacy Policy</a>
+      <a href="../cookie.html" class="hover:text-[var(--brand-yellow)] transition">Cookie Policy</a>
+      <a href="../terms.html" class="hover:text-[var(--brand-yellow)] transition">Terms & Conditions</a>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

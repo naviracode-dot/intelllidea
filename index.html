@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Intellidea - Insight to Innovate for Impact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        display: ['"Wix Madefor Display"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#2C466D',   /* Brand Navy */
+                            yellow: '#F9C100', /* Brand Yellow */
+                            dark: '#1a2c45'    /* Darker shade for footer/hovers */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section Container */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Video Background Styling */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        /* Whatsapp Float Animation */
+        .whatsapp-float {
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-brand-blue">
+
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-brand-blue shadow-md" id="navbar">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <a href="index.html" class="flex items-center gap-3">
+  <!-- responsive image logo (use png/webp/svg as you have) -->
+  <picture>
+    <!-- PNG fallback -->
+    <img
+      src="intellidea.png"
+      class="h-10 md:h-14 w-auto object-contain"
+      width="220"
+      height="56"
+      loading="eager"
+    />
+  </picture>
+</a>
+
+
+                <!-- Desktop nav container (populated dynamically) -->
+                <nav id="desktopNav" class="hidden lg:flex items-center gap-10"></nav>
+
+                <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-3xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu wrapper; the inner links will be populated dynamically -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-brand-blue border-t border-white/20 absolute w-full left-0 top-20 shadow-xl">
+            <div id="mobileNav" class="flex flex-col p-4 space-y-4"></div>
+        </div>
+    </header>
+
+   <section class="hero-section relative flex items-start justify-start">
+  <!-- video: autoplay muted for cross-browser autoplay -->
+  <video id="heroVideo" autoplay muted loop playsinline class="hero-video">
+    <source src="./assets/intellideahero.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- subtle gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-0"></div>
+
+  <!-- content container: top-aligned beneath navbar, large left offset like your screenshot -->
+  <div class="container mx-auto px-4 lg:px-8 pt-[150px] z-10">
+    <!-- use a narrower max-width and left-align to match screenshot -->
+    <div class="max-w-4xl">
+      <h1 class="font-display text-[43px] md:text-[56px] leading-tight font-extrabold text-white mb-8 text-left">
+        Insight
+        <span class="font-sans text-[11px] md:text-[14px] font-light align-middle px-1 opacity-90 tracking-wide uppercase relative -top-1">to</span>
+        Innovate
+        <span class="font-sans text-[11px] md:text-[14px] font-light align-middle px-1 opacity-90 tracking-wide uppercase relative -top-1">for</span>
+        Impact
+      </h1>
+
+      <!-- action row: Learn More + Unmute (styled the same) -->
+      <div class="flex items-center gap-4">
+        <a href="#" id="learnMoreBtn" class="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-brand-blue font-medium text-lg px-8 py-3 rounded-full transition duration-300">
+          Learn More
+        </a>
+
+        <!-- Unmute button styled to match Learn More -->
+        <button id="audioToggle" aria-pressed="false" aria-label="Unmute video"
+                class="inline-flex items-center gap-3 border-2 border-white text-white hover:bg-white hover:text-brand-blue font-medium text-lg px-6 py-3 rounded-full transition duration-300">
+          <i id="audioIcon" class="fa-solid fa-volume-xmark text-lg"></i>
+          <span id="audioLabel" class="hidden md:inline">Unmute</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Whatsapp floating (kept same placement) -->
+  <a href="https://wa.me/919082378708" target="_blank" class="fixed bottom-6 right-6 z-50 group">
+    <div class="bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-2.5 rounded-full flex items-center gap-2 shadow-lg cursor-pointer transition whatsapp-float">
+      <i class="fab fa-whatsapp text-2xl"></i>
+      <span class="font-medium text-sm">Chat on WhatsApp</span>
+    </div>
+  </a>
+</section>
+
+<style>
+  /* clamp utility for exactly 5 lines with ellipsis */
+  .clamp-5 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5; /* limit to 5 lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+
+  /* Fine tune card heights to match screenshot */
+  @media (min-width: 1024px) {
+    /* Make cards visually the same height on large screens */
+    .offer-card { min-height: 320px; } /* adjust if you want taller/shorter */
+  }
+</style>
+
+<section id="offerings" class="pt-16 pb-20 lg:pt-24 lg:pb-32 bg-[#2C466D]">
+  <div class="mx-auto px-4 lg:px-8 max-w-7xl">
+    <h2 class="font-display font-bold text-center text-white mb-12 lg:mb-16 leading-tight text-[28px] md:text-[32px] lg:text-[38px]">
+      We provide in-depth support through<br class="hidden md:block"> a bouquet of offerings
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-start">
+
+      <div class="bg-white rounded-xl p-8 flex flex-col shadow-lg h-full">
+        <h3 class="font-display font-bold text-[#2C466D] mb-4 leading-tight text-[28px]">IntEllev8</h3>
+        <p class="card-body font-sans text-[#2C466D] opacity-90 text-[17px] leading-relaxed mt-2">
+          We deliver strategic guidance to drive efficiency and growth; ensuring businesses, leaders and aspiring entrepreneurs overcome their unique challenges.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-8 flex flex-col shadow-lg h-full">
+        <h3 class="font-display font-bold text-[#2C466D] mb-4 leading-tight text-[28px]">IntellXperia</h3>
+        <p class="card-body font-sans text-[#2C466D] opacity-90 text-[17px] leading-relaxed mt-2">
+          As a collaborative partner, we provide expertise with rich experience and a proven track record, ensuring the respective function is led with the highest level of strategic clarity.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-8 flex flex-col shadow-lg h-full">
+        <h3 class="font-display font-bold text-[#2C466D] mb-4 leading-tight text-[28px]">IntelliWise</h3>
+        <p class="card-body font-sans text-[#2C466D] opacity-90 text-[17px] leading-relaxed mt-2">
+          Empower learners with essential training and development programs that enhance knowledge and skills, foster leadership, promote innovation for progress and growth.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-8 flex flex-col shadow-lg h-full">
+        <h3 class="font-display font-bold text-[#2C466D] mb-4 leading-tight text-[28px]">IntelliCircle</h3>
+        <p class="card-body font-sans text-[#2C466D] opacity-90 text-[17px] leading-relaxed mt-2">
+          Build and nurture a vibrant community of leaders and entrepreneurs offering continuous support through collaboration and shared learning for growth.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+ <section class="flex flex-col lg:flex-row w-full lg:h-[480px] bg-white">
+        <div class="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 lg:p-12 order-1 lg:order-1">
+            <h2 class="font-display font-bold text-brand-blue text-[28px] md:text-[32px] lg:text-[36px] mb-10 md:mb-12 text-center">
+                Unique Value Proposition
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 w-full max-w-lg">
+                <div class="flex flex-col items-center text-center">
+                    <div class="mb-3">
+                        <img src="./assets/Tailor - made.png" alt="Strategy Icon" class="w-12 h-12 object-contain">
+                    </div>
+                    <p class="font-sans text-brand-blue text-sm md:text-base font-medium max-w-[500px]">Tailor - made strategy and guidance</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div class="mb-3">
+                        <img src="./assets/Ideation.png" alt="Ideation Icon" class="w-12 h-12 object-contain">
+                    </div>
+                    <p class="font-sans text-brand-blue text-sm md:text-base font-medium max-w-[200px]">Ideation to facilitation</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div class="mb-3">
+                        <img src="./assets/Panel of Experts.png" alt="Experts Icon" class="w-12 h-12 object-contain">
+                    </div>
+                    <p class="font-sans text-brand-blue text-sm md:text-base font-medium max-w-[200px]">A panel of experts with global best practices</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div class="mb-3">
+                        <img src="./assets/Ecosystem.png" alt="Ecosystem Icon" class="w-12 h-12 object-contain">
+                    </div>
+                    <p class="font-sans text-brand-blue text-sm md:text-base font-medium max-w-[200px]">Ecosystem for continual learning and growth</p>
+                </div>
+            </div>
+        </div>
+        <div class="w-full lg:w-1/2 h-64 lg:h-full bg-gray-200 relative order-2 lg:order-2">
+            <img src="./assets/intellidea1.png" alt="Unique Value Proposition" class="w-full h-full object-cover">
+        </div>
+    </section>
+
+    <section class="flex flex-col-reverse lg:flex-row w-full lg:h-[676px]">
+        <div class="w-full lg:w-1/2 h-64 md:h-96 lg:h-full bg-gray-300 relative">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop" alt="Skyscrapers" class="w-full h-full object-cover">
+        </div>
+        <div class="w-full lg:w-1/2 bg-brand-blue flex flex-col justify-center px-8 py-12 lg:p-20 text-white">
+            <h2 class="font-display font-bold text-[28px] md:text-[32px] lg:text-[42px] mb-8 lg:mb-12">Outcome & Impact</h2>
+            <ul class="space-y-6 lg:space-y-8">
+                <li class="flex items-start gap-4">
+                    <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
+                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                    </div>
+                    <span class="font-sans text-lg lg:text-xl font-medium">Enhanced Performance</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
+                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                    </div>
+                    <span class="font-sans text-lg lg:text-xl font-medium">Enhanced Presence In Domestic And International Markets</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
+                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                    </div>
+                    <span class="font-sans text-lg lg:text-xl font-medium">Entrepreneurial Excellence</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
+                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                    </div>
+                    <span class="font-sans text-lg lg:text-xl font-medium">Capacity Building</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
+                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                    </div>
+                    <span class="font-sans text-lg lg:text-xl font-medium">Contribution To The Economy</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
+                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                    </div>
+                    <span class="font-sans text-lg lg:text-xl font-medium">Increased Employment Opportunities</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+<section id="collaborative-process" class="w-full bg-white flex flex-col justify-center items-center py-16 px-4 overflow-hidden">
+    <div class="container mx-auto max-w-6xl text-center">
+        
+        <h2 class="process-item font-display font-bold text-brand-blue text-[22px] md:text-[28px] lg:text-[32px] leading-tight max-w-4xl mx-auto mb-16 opacity-0 translate-y-4 transition-all duration-700 ease-out">
+            We believe in a collaborative approach, offering customized solutions based on the unique challenges and goals of each customer we work with
+        </h2>
+
+        <div class="flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-8">
+            
+            <!-- Step 1 -->
+            <div class="process-item flex flex-col items-center max-w-[240px] opacity-0 translate-y-4 transition-all duration-700 ease-out delay-[200ms]">
+                <div class="h-20 w-20 mb-6 flex items-center justify-center">
+                    <img src="./assets/idea.png" alt="Initial Assessment" class="h-20 w-20 object-contain">
+                </div>
+                <p class="font-sans text-brand-blue font-medium text-[16px] md:text-lg lg:text-xl text-center">
+                    Initial Assessment
+                </p>
+            </div>
+
+            <div class="process-item hidden lg:flex h-20 items-center justify-center opacity-0 translate-x-[-10px] transition-all duration-700 ease-out delay-[400ms]">
+                <i class="fas fa-arrow-right text-brand-blue text-4xl"></i>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="process-item flex flex-col items-center max-w-[240px] opacity-0 translate-y-4 transition-all duration-700 ease-out delay-[600ms]">
+                <div class="h-20 w-20 mb-6 flex items-center justify-center">
+                    <img src="./assets/Customized.png" alt="Customized Strategy" class="h-20 w-20 object-contain">
+                </div>
+                <p class="font-sans text-brand-blue font-medium text-[16px] md:text-lg lg:text-xl text-center max-w-[230px]">
+                    Customized strategy & Solution Design
+                </p>
+            </div>
+
+            <div class="process-item hidden lg:flex h-20 items-center justify-center opacity-0 translate-x-[-10px] transition-all duration-700 ease-out delay-[800ms]">
+                <i class="fas fa-arrow-right text-brand-blue text-4xl"></i>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-item flex flex-col items-center max-w-[240px] opacity-0 translate-y-4 transition-all duration-700 ease-out delay-[1000ms]">
+                <div class="h-20 w-20 mb-6 flex items-center justify-center">
+                    <img src="./assets/Implementation.png" alt="Implementation" class="h-20 w-20 object-contain">
+                </div>
+                <p class="font-sans text-brand-blue font-medium text-[16px] md:text-lg lg:text-xl text-center">
+                    Implementation Assistance
+                </p>
+            </div>
+
+            <div class="process-item hidden lg:flex h-20 items-center justify-center opacity-0 translate-x-[-10px] transition-all duration-700 ease-out delay-[1200ms]">
+                <i class="fas fa-arrow-right text-brand-blue text-4xl"></i>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="process-item flex flex-col items-center max-w-[240px] opacity-0 translate-y-4 transition-all duration-700 ease-out delay-[1400ms]">
+                <div class="h-20 w-20 mb-6 flex items-center justify-center">
+                    <img src="./assets/Hand-holding.png" alt="Ongoing Support" class="h-20 w-20 object-contain">
+                </div>
+                <p class="font-sans text-brand-blue font-medium text-[16px] md:text-lg lg:text-xl text-center max-w-[230px]">
+                    Ongoing hand-holding support
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+    <section id="aboutus" class="flex flex-col lg:flex-row w-full lg:h-[543px] bg-brand-blue">
+        <div class="w-full lg:w-1/2 flex flex-col justify-center px-8 py-12 lg:p-20 text-white order-1">
+            <h2 class="font-display font-bold text-[28px] md:text-[32px] lg:text-[42px] mb-6 lg:mb-8">Who we are</h2>
+            <p class="font-sans text-sm md:text-base lg:text-[17px] leading-relaxed opacity-90 text-justify">
+                With a deep understanding of the challenges that our clients face, we offer tailored solutions to enable them to navigate challenges, seize opportunities, unlock their potential, grow sustainably, innovate continuously, and achieve lasting success. Our team consist of experts, thought leaders, and experienced business advisors with rich experience in different domains, diverse functions and geographies. Whether you’re looking to build a sustainable business model, enter new markets, or looking to secure funding, we are here to guide you every step of the way.
+            </p>
+        </div>
+        <div class="w-full lg:w-1/2 h-64 md:h-96 lg:h-full relative order-2">
+            <img src="./assets/team1.jpg" alt="Intellidea Team" class="w-full h-full object-cover">
+        </div>
+    </section>
+
+<section class="w-full lg:h-[493px] bg-[#E6F4F1] flex items-center justify-center py-12 lg:py-0">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+
+      <div class="bg-brand-blue text-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col justify-start hover:-translate-y-1 transition-transform duration-300 min-h-[220px] md:min-h-[280px]">
+        <h3 class="font-display font-bold text-[22px] md:text-[26px] lg:text-[30px] mb-4">
+          Our Vision
+        </h3>
+        <p class="font-sans text-[15px] md:text-[17px] lg:text-[18px] leading-relaxed opacity-95">
+          Develop an ecosystem enabling innovative solutions for business growth impact.
+        </p>
+      </div>
+
+      <div class="bg-brand-blue text-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col justify-start hover:-translate-y-1 transition-transform duration-300 min-h-[220px] md:min-h-[280px]">
+        <h3 class="font-display font-bold text-[22px] md:text-[26px] lg:text-[30px] mb-4">
+          Our Mission
+        </h3>
+        <p class="font-sans text-[15px] md:text-[17px] lg:text-[18px] leading-relaxed opacity-95">
+          Create value by addressing complex challenges for sustainable growth. Enabling businesses with industry experts to equip them with the strategies, skills and support they need to thrive and evolve.
+        </p>
+      </div>
+
+      <div class="bg-brand-blue text-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col justify-start hover:-translate-y-1 transition-transform duration-300 min-h-[220px] md:min-h-[280px]">
+        <h3 class="font-display font-bold text-[22px] md:text-[26px] lg:text-[30px] mb-4">
+          Our Purpose
+        </h3>
+        <p class="font-sans text-[15px] md:text-[17px] lg:text-[18px] leading-relaxed opacity-95">
+          Optimise potential for progress through capacity building, entrepreneurial development and women empowerment.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="flex flex-col lg:flex-row w-full lg:h-[554px] bg-white">
+    <div class="w-full lg:w-1/2 h-64 md:h-96 lg:h-full relative order-1">
+        <img src="./assets/team.jpg" alt="Core Values Team" class="w-full h-full object-cover">
+    </div>
+
+    <div class="w-full lg:w-1/2 flex flex-col justify-center items-center px-8 py-12 lg:p-16 order-2">
+        
+        <h2 class="font-display font-bold text-brand-blue text-[28px] md:text-[32px] lg:text-[42px] mb-10 lg:mb-14 text-center">
+            Our Core Values
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 w-full max-w-lg">
+
+            <!-- Knowledge based-insights (ONE LINE) -->
+            <div class="flex flex-col items-center text-center">
+                <div class="mb-4">
+                    <img src="./assets/Knowledge.png" alt="Knowledge" class="h-12 w-12 object-contain">
+                </div>
+                <p class="font-sans text-brand-blue font-medium text-base lg:text-lg whitespace-nowrap">
+                    Knowledge based-insights
+                </p>
+            </div>
+
+            <!-- Ethics -->
+            <div class="flex flex-col items-center text-center">
+                <div class="mb-4">
+                    <img src="./assets/Ethics.png" alt="Ethics" class="h-12 w-12 object-contain">
+                </div>
+                <p class="font-sans text-brand-blue font-medium text-base lg:text-lg">
+                    Ethics and Integrity
+                </p>
+            </div>
+
+            <!-- Commitment to Excellence (ONE LINE) -->
+            <div class="flex flex-col items-center text-center">
+                <div class="mb-4">
+                    <img src="./assets/Excellence.png" alt="Excellence" class="h-12 w-12 object-contain">
+                </div>
+                <p class="font-sans text-brand-blue font-medium text-base lg:text-lg whitespace-nowrap">
+                    Commitment to Excellence
+                </p>
+            </div>
+
+            <!-- Leadership -->
+            <div class="flex flex-col items-center text-center">
+                <div class="mb-4">
+                    <img src="./assets/Leadership.png" alt="Leadership" class="h-12 w-12 object-contain">
+                </div>
+                <p class="font-sans text-brand-blue font-medium text-base lg:text-lg">
+                    Leadership to enable<br>and empower
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="w-full lg:h-[839px] bg-[#F8FAFC] flex flex-col justify-center items-center py-16 lg:py-0">
+  <div class="container mx-auto px-4 lg:px-8">
+    <h2 class="font-display font-bold text-[#2C466D] text-[28px] md:text-[32px] lg:text-[42px] mb-12 lg:mb-16 text-center">
+      Our Founders
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+      <!-- Founder 1 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+        <!-- taller responsive image frame -->
+        <div class="w-full h-64 md:h-80 lg:h-[420px] bg-gray-200 overflow-hidden">
+          <img src="./assets/rajnikant (1).png" alt="Rajnickant Patel"
+               class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
+        </div>
+
+        <div class="p-5 md:p-6 flex flex-col flex-grow text-center">
+          <h3 class="font-display font-bold text-[#2C466D] text-xl lg:text-2xl mb-1">Rajnickant Patel</h3>
+          <p class="font-sans text-[#000] font-medium text-sm mb-4 uppercase tracking-wide">Chairman</p>
+          <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+            Mr. Rajnickant Patel is a distinguished leader in the financial services sector with an illustrious career spanning decades of excellence and strategic leadership.
+          </p>
+          <a href="./team/1.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+        </div>
+      </div>
+
+      <!-- Founder 2 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+        <div class="w-full h-64 md:h-80 lg:h-[420px] bg-gray-200 overflow-hidden">
+          <img src="./assets/viresh.png" alt="Viresh Patel"
+               class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
+        </div>
+
+        <div class="p-5 md:p-6 flex flex-col flex-grow text-center">
+          <h3 class="font-display font-bold text-[#2C466D] text-xl lg:text-2xl mb-1">Viresh Patel</h3>
+          <p class="font-sans text-[#000] font-medium text-sm mb-4 uppercase tracking-wide">MD & CEO</p>
+          <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+            A dynamic, versatile & result-oriented growth-preneur with 28+ years of experience spanning diverse domains across IT and business strategy.
+          </p>
+          <a href="./team/2.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+        </div>
+      </div>
+
+      <!-- Founder 3 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+        <div class="w-full h-64 md:h-80 lg:h-[420px] bg-gray-200 overflow-hidden">
+          <img src="./assets/jyoti_mam_update.png" alt="Jyoti Patel"
+               class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
+        </div>
+
+        <div class="p-5 md:p-6 flex flex-col flex-grow text-center">
+          <h3 class="font-display font-bold text-[#2C466D] text-xl lg:text-2xl mb-1">Jyoti Patel</h3>
+          <p class="font-sans text-[#000] font-medium text-sm mb-4 uppercase tracking-wide">Director</p>
+          <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+            Ms. Jyoti Patel is a passionate educator with over 25 years of experience in diverse roles across various educational institutions and initiatives.
+          </p>
+          <a href="./team/3.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- Our Advisory Board Section -->
+    <!-- Similar style to Founders but with 2 columns centered -->
+    <section class="w-full bg-white flex flex-col justify-center items-center py-16 lg:py-24">
+        <div class="container mx-auto px-4 lg:px-8">
+            <!-- Section Heading -->
+            <h2 class="font-display font-bold text-[#2C466D] text-[28px] md:text-[32px] lg:text-[42px] mb-12 lg:mb-16 text-center">
+                Our Advisory Board
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                
+                <!-- Board Member 1: Dr. R. B. Barman -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <div class="h-[350px] w-full bg-gray-200">
+                        <img src="./assets/4.png" alt="Dr. R. B. Barman" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow text-center">
+                        <h3 class="font-display font-bold text-[#2C466D] text-xl lg:text-2xl mb-4">
+                            Dr. R. B. Barman
+                        </h3>
+                        <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                            Dr. R. B. Barman, former Executive Director of the Reserve Bank of India, is a highly esteemed expert with decades of experience in banking technology and statistical analysis.
+                        </p>
+                        <a href="./team/4.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Board Member 2: Sanjay Ubale -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <div class="h-[350px] w-full bg-gray-200">
+                        <img src="./assets/sanjay_ubale.png" alt="Sanjay Ubale" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow text-center">
+                        <h3 class="font-display font-bold text-[#2C466D] text-xl lg:text-2xl mb-4">
+                            Sanjay Ubale
+                        </h3>
+                        <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                            Sanjay Ubale, a distinguished IAS officer and seasoned leader with over 31 years of experience, bringing profound insights into public policy and infrastructure development.
+                        </p>
+                        <a href="./team/5.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Associates Section -->
+    <!-- Light gray background for separation. 3 Column Grid with 10th item centered. -->
+<!-- Our Associates Section -->
+<section class="w-full bg-[#F8FAFC] flex flex-col justify-center items-center py-16 lg:py-24">
+    <div class="container mx-auto px-4 lg:px-8">
+
+        <!-- Section Heading -->
+        <h2 class="font-display font-bold text-[#2C466D] text-[28px] md:text-[32px] lg:text-[42px] mb-12 lg:mb-16 text-center">
+            Our Associates
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+            <!-- Associate 1: Dr. Shashi Bhushan Singh -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+    <div class="w-full h-64 md:h-80 lg:h-[380px] bg-gray-200 overflow-hidden">
+        <img src="./assets/shashisir.jpg"
+             alt="Dr. Shashi Bhushan Singh"
+             class="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500">
+    </div>
+
+    <div class="p-6 flex flex-col flex-grow text-center">
+        <h3 class="font-display font-bold text-[#2C466D] text-lg lg:text-xl mb-3">
+            Dr. Shashi Bhushan Singh
+        </h3>
+        <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+            Dr. Shashi Bhushan Singh is a distinguished expert with a blend of technical, academic and management skills with over...
+        </p>
+        <a href="./team/6.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">
+            Read More
+        </a>
+    </div>
+</div>
+
+
+            <!-- Associate 2: CA Hiten Shah -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                <div class="w-full h-64 md:h-80 lg:h-[380px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/hiten_shah.png"
+                         alt="CA Hiten Shah"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-lg lg:text-xl mb-3">
+                        CA Hiten Shah
+                    </h3>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        CA Hiten Shah is a seasoned finance professional with 37 years of extensive experience specialising in Family...
+                    </p>
+                    <a href="./team/7.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+                </div>
+            </div>
+
+            <!-- Associate 3: Dr. CA Chaitanya Shah -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                <div class="w-full h-64 md:h-80 lg:h-[380px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/chaitanya_shah.png"
+                         alt="Dr. CA Chaitanya Shah"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-lg lg:text-xl mb-3">
+                        Dr. CA Chaitanya Shah
+                    </h3>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        Dr. CA Chaitanya Shah is a seasoned financial strategist, author, mentor and speaker with 20+ years of corporate leadership...
+                    </p>
+                    <a href="./team/8.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+                </div>
+            </div>
+
+            <!-- Associate 4: Dr. Leena Pimpley -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                <div class="w-full h-64 md:h-80 lg:h-[380px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/Dr.LeenaPimpley.png"
+                         alt="Dr. Leena Pimpley"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-lg lg:text-xl mb-3">
+                        Dr. Leena Pimpley
+                    </h3>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        Dr. Leena Pimpley has over 35 years of experience in education, specializing in Competency-based Learning &...
+                    </p>
+                    <a href="./team/9.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+                </div>
+            </div>
+
+            <!-- Associate 5: Dr. Nisarg Pathak -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                <div class="w-full h-64 md:h-80 lg:h-[380px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/Dr. Nisarg.png"
+                         alt="Dr. Nisarg Pathak"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-lg lg:text-xl mb-3">
+                        Dr. Nisarg Pathak
+                    </h3>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        Dr. Nisarg Pathak is a seasoned professional specialising in technical product engineering, product portfolio...
+                    </p>
+                    <a href="./team/10.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+                </div>
+            </div>
+
+            <!-- Associate 6: Parikshit Patel -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                <div class="w-full h-64 md:h-80 lg:h-[380px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/Parikshit_patel.png"
+                         alt="Parikshit Patel"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-lg lg:text-xl mb-3">
+                        Parikshit Patel
+                    </h3>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        Parikshit is a distinguished technologist in the software industry with over 15 years of experience providing innovative...
+                    </p>
+                    <a href="./team/13.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+                </div>
+            </div>
+
+            <!-- Associate 7: Prashant Dhume -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                <div class="w-full h-64 md:h-80 lg:h-[380px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/PD ID.png"
+                         alt="Prashant Dhume"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-lg lg:text-xl mb-3">
+                        Prashant Dhume
+                    </h3>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        Prashant Dhume is a distinguished technology executive with over 30 years of global experience across enterprise risk...
+                    </p>
+                    <a href="./team/14.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+                </div>
+            </div>
+
+            <!-- Associate 8: Ketan Shah -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                <div class="w-full h-64 md:h-80 lg:h-[380px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/ketan_shah2.png"
+                         alt="Ketan Shah"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-lg lg:text-xl mb-3">
+                        Ketan Shah
+                    </h3>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        With over 24 years of experience, including 18 years focused on designing and executing management systems...
+                    </p>
+                    <a href="./team/11.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+                </div>
+            </div>
+
+            <!-- Associate 9: Mauli Shah -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+                <div class="w-full h-64 md:h-80 lg:h-[380px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/mauli_shah.png"
+                         alt="Mauli Shah"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-lg lg:text-xl mb-3">
+                        Mauli Shah
+                    </h3>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        Mauli is a dynamic and results-driven IT & Cybersecurity expert with over a decade of specialized experience.
+                    </p>
+                    <a href="./team/12.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+                </div>
+            </div>
+
+            <!-- Associate 10: Dr. Mahendra Gupta -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group lg:col-start-2">
+                <div class="w-full h-64 md:h-80 lg:h-[380px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/Dr.mahendra.png"
+                         alt="Dr. Mahendra Gupta"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-lg lg:text-xl mb-3">
+                        Dr. Mahendra Gupta
+                    </h3>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        Dr. Mahendra Gupta is an accomplished expert in Human Capital Management, specializing in Human Resource Management...
+                    </p>
+                    <a href="./team/15.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">Read More</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- Our Team Section -->
+    <!-- White background for contrast against the previous gray section -->
+<!-- Our Team Section -->
+<section class="w-full bg-white flex flex-col justify-center items-center py-16 lg:py-24">
+    <div class="container mx-auto px-4 lg:px-8">
+
+        <!-- Section Heading -->
+        <h2 class="font-display font-bold text-[#2C466D] text-[28px] md:text-[32px] lg:text-[42px] mb-12 lg:mb-16 text-center">
+            Our Team
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+            <!-- Team Member 1: Richard George -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300 flex flex-col group">
+                <div class="w-full h-64 md:h-80 lg:h-[420px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/Richard.png"
+                         alt="Richard George"
+                         class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
+                </div>
+
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-xl lg:text-2xl mb-1">
+                        Richard George
+                    </h3>
+                    <p class="font-sans text-[#000] font-medium text-sm mb-4 uppercase tracking-wide">
+                        Creative Head
+                    </p>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        A seasoned visionary with an illustrious career spanning over 30 years, Richard brings unparalleled expertise in creative...
+                    </p>
+                    <a href="./team/16.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">
+                        Read More
+                    </a>
+                </div>
+            </div>
+
+            <!-- Team Member 2: Shekhar Agarwal -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300 flex flex-col group">
+                <div class="w-full h-64 md:h-80 lg:h-[420px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/SA ID.png"
+                         alt="Shekhar Agarwal"
+                         class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
+                </div>
+
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-xl lg:text-2xl mb-1">
+                        Shekhar Agarwal
+                    </h3>
+                    <p class="font-sans text-[#000] font-medium text-sm mb-4 uppercase tracking-wide">
+                        Compliance & Statutory Auditor
+                    </p>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        Shekhar Agarwal is a distinguished Fellow Member of the Institute of Chartered Accountants of India (ICAI)...
+                    </p>
+                    <a href="./team/17.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">
+                        Read More
+                    </a>
+                </div>
+            </div>
+
+            <!-- Team Member 3: Amee Sedani -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300 flex flex-col group">
+                <div class="w-full h-64 md:h-80 lg:h-[420px] bg-gray-200 overflow-hidden">
+                    <img src="./assets/Amee.png"
+                         alt="Amee Sedani"
+                         class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
+                </div>
+
+                <div class="p-6 flex flex-col flex-grow text-center">
+                    <h3 class="font-display font-bold text-[#2C466D] text-xl lg:text-2xl mb-1">
+                        Amee Sedani
+                    </h3>
+                    <p class="font-sans text-[#000] font-medium text-sm mb-4 uppercase tracking-wide">
+                        HR Business Lead
+                    </p>
+                    <p class="font-sans text-[#2C466D] text-sm leading-relaxed opacity-80 mb-4 line-clamp-3">
+                        Dedicated and passionate professional with nearly a decade of rich experience in the dynamic field of Human Resources...
+                    </p>
+                    <a href="./team/18.html" class="inline-block mt-auto text-[#2C466D] font-bold text-sm hover:underline">
+                        Read More
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- Our Corporate Clients Section -->
+    <!-- Light gray background for separation. 5 Column Grid. -->
+    <section class="w-full bg-[#F8FAFC] flex flex-col justify-center items-center py-16 lg:py-24">
+        <div class="container mx-auto px-4 lg:px-8">
+            <!-- Section Heading -->
+            <h2 class="font-display font-bold text-[#2C466D] text-[28px] md:text-[32px] lg:text-[42px] mb-12 lg:mb-16 text-center">
+                Our Corporate Clients
+            </h2>
+
+            <!-- Grid Layout: Mobile 2col, Tablet 4col, Desktop 5col -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+                
+                <!-- Client 1 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex justify-center items-center h-32 p-4">
+                
+                <img src="./assets/images.jpeg" alt="Client 1 Logo" class="max-h-full max-w-full object-contain">
+                </div>
+                <!-- Client 2 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex justify-center items-center h-32 p-4">
+                    <img src="./assets/alphamed.png" alt="Client 2 Logo" class="max-h-full max-w-full object-contain">
+                </div>
+
+                <!-- Client 3 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex justify-center items-center h-32 p-4">
+                    <img src="./assets/bk.png" alt="Client 3 Logo" class="max-h-full max-w-full object-contain">
+                </div>
+
+                <!-- Client 4 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex justify-center items-center h-32 p-4">
+                    <img src="./assets/Kenilworth Logo.jpegd" alt="Client 4 Logo" class="max-h-full max-w-full object-contain">
+                </div>
+
+                <!-- Client 5 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex justify-center items-center h-32 p-4">
+                    <img src="./assets/mmb.png" alt="Client 5 Logo" class="max-h-full max-w-full object-contain">
+                </div>
+
+                <!-- Client 6 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex justify-center items-center h-32 p-4">
+                    <img src="./assets/recharge.png" alt="Client 6 Logo" class="max-h-full max-w-full object-contain">
+                </div>
+
+                <!-- Client 7 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex justify-center items-center h-32 p-4">
+                    <img src="./assets/divergent.jpg" alt="Client 6 Logo" class="max-h-full max-w-full object-contain">
+                </div>
+               
+
+            </div>
+        </div>
+    </section>
+
+<section id="resources" class="py-16 bg-gray-50 text-center">
+  <h2 class="text-4xl font-bold text-[#2C466D] mb-12">Resources</h2>
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-6">
+    <!-- Brochure 1 -->
+    <div>
+      <div class="aspect-[16/10] w-full">
+        <iframe style="width:550px;height:350px" src="https://online.anyflip.com/ryhrt/sskr/index.html"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe>
+      </div>
+      <button onclick="openModal(1)" class="mt-4 bg-[#2C466D] text-white px-6 py-2 rounded-xl hover:bg-[#2C466D] transition">Email Brochure</button>
+    </div>
+
+    <!-- Brochure 2 -->
+    <div>
+      <div class="aspect-[16/10] w-full">
+        <iframe style="width:550px;height:350px" src="https://online.anyflip.com/ryhrt/xzmo/index.html"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe>
+      </div>
+      <button onclick="openModal(2)" class="mt-4 bg-[#2C466D] text-white px-6 py-2 rounded-xl hover:bg-[#2C466D] transition">Email Brochure</button>
+    </div>
+
+    <!-- Video 1 -->
+    <div>
+      <div class="aspect-video w-full">
+        <iframe class="w-full h-full rounded-xl shadow-md" src="https://www.youtube.com/embed/yd2yKDqwbU0?si=RZEWX0hq65JYwIXy" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Video 2 -->
+    <div>
+      <div class="aspect-video w-full">
+        <iframe class="w-full h-full rounded-xl shadow-md" src="https://www.youtube.com/embed/dncdU1b3ugM?si=uwHtWtEvg-uubBZR" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup Form Modal -->
+  <div id="formModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-xl w-[90%] max-w-md relative shadow-xl">
+      <button onclick="closeModal()" class="absolute top-2 right-4 text-gray-600 text-2xl">&times;</button>
+      <h3 class="text-2xl font-semibold text-[#2C466D] mb-4">Enter Your Details to Download</h3>
+      <form id="brochureForm">
+        <input type="text" name="name" placeholder="Name" required class="w-full mb-3 p-2 border rounded">
+        <input type="text" name="occupation" placeholder="Occupation" required class="w-full mb-3 p-2 border rounded">
+        <input type="tel" name="contact" placeholder="Contact Number" required class="w-full mb-3 p-2 border rounded">
+        <input type="email" name="email" placeholder="Email ID" required class="w-full mb-3 p-2 border rounded">
+        <input type="hidden" name="brochure" id="brochureType">
+        <button type="submit" class="bg-[#2C466D] w-full text-white py-2 rounded-xl hover:bg-[#2C466D transition">Submit & Email</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  let selectedBrochure = '';
+
+  function openModal(brochureNumber) {
+    document.getElementById("formModal").classList.remove("hidden");
+    selectedBrochure = brochureNumber;
+    document.getElementById("brochureType").value = "Brochure " + brochureNumber;
+  }
+
+  function closeModal() {
+    document.getElementById("formModal").classList.add("hidden");
+  }
+
+  document.getElementById("brochureForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    fetch("https://script.google.com/macros/s/AKfycbyQ9_dhQx5LvTHeXerqfH7v_-hYxhSCQu0zHdcz-Rt6Tca8lYwo0sfZvrZv5aewU7e0Rw/exec", {
+      method: "POST",
+      body: formData
+    })
+    .then(() => {
+      const brochureLinks = {
+        1: "assets/downloads/Intellidea.pdf",
+        2: "assets/downloads/IntelliWise.pdf"
+      };
+      window.open(brochureLinks[selectedBrochure], '_blank');
+      closeModal();
+    })
+    .catch((error) => {
+      alert("Something went wrong. Please try again.");
+      console.error(error);
+    });
+  });
+</script>
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-[#2C466D] text-white">
+      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start">
+        
+        <!-- Left Side -->
+        <div>
+          <h3 class="text-lg text-[#fff] font-semibold mb-4">Reach out to us or learn more about our services</h3>
+          <div class="mb-6">
+            <p class="font-bold">Corporate Office:</p>
+            <p>Innov8, Times Square, A Wing, 4th Floor, Marol, Andheri Kurla Road,<br>Andheri East, Mumbai 400059</p>
+          </div>
+          <div class="mb-6">
+            <p class="font-bold">Regd. Office:</p>
+            <p>EMP 47/1903, Thakur Village, Kandivali East, Mumbai 400101</p>
+          </div>
+          <div class="flex items-center gap-3 mb-4">
+            <i class="fas fa-phone-alt text-[#F9C100] w-5 h-5 flex items-center justify-center"></i>
+            <span class="text-white">+91 9082 378 708</span>
+          </div>
+          <div class="flex items-center gap-3 mb-4">
+            <i class="fas fa-envelope text-[#F9C100] w-5 h-5 flex items-center justify-center"></i>
+            <span class="text-white">hello@intellidea.co.in</span>
+          </div>
+        </div>
+
+        <!-- Right Side: Contact Form -->
+        <div x-data="contactForm()" x-init="initialize">
+          <h3 class="text-[#fff] font-semibold text-lg mb-4">Ready to Take Your Business to the Next Level?</h3>
+          <form @submit.prevent="submitForm" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="text" x-model="firstName" required placeholder="First name" class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
+              <input type="text" x-model="lastName" required placeholder="Last name" class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="email" x-model="email" required placeholder="Email" class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
+              <input id="whatsapp" type="tel" required placeholder="WhatsApp Number" class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
+            </div>
+            <textarea x-model="message" required rows="4" placeholder="Message" class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors"></textarea>
+            <button type="submit" class="border border-[#F9C100] text-[#F9C100] px-6 py-2 rounded-full hover:bg-[#F9C100] hover:text-[#2C466D] transition duration-300 font-bold uppercase tracking-wide">Submit</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+<!-- (rest of your long page continues — unchanged) -->
+<!-- ... OMITTED FOR BREVITY (keeps identical content from your original file) ... -->
+
+<!-- I kept all your sections after the header / hero exactly as provided above in your original file. -->
+
+<footer class="bg-[#2C466D] text-gray-200 py-6 border-t border-white/20">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm">
+        <div class="mb-4 md:mb-0 text-center md:text-left">
+            Copyright – 2025 | <span class="text-white font-medium">Intellidea Consultancy Services Pvt. Ltd.</span>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 items-center">
+            <a href="privacy.html" class="hover:text-[#F9C100] transition">Privacy Policy</a>
+            <a href="cookie.html" class="hover:text-[#F9C100] transition">Cookie Policy</a>
+            <a href="terms.html" class="hover:text-[#F9C100] transition">Terms & Conditions</a>
+            <a href="https://wa.me/919082378708" class="bg-green-500 text-white px-4 py-1.5 rounded-full flex items-center gap-2 hover:bg-green-600 transition shadow-sm">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- SCRIPTS: contact form + menu mapping + hero audio logic + other existing scripts -->
+<script>
+    // ===== MENU DATA & RENDERING =====
+    // Edit this array to change the navigation items (order, text, href)
+    const menuItems = [
+        { name: "Home", href: "#" },
+        { name: "Solutions & Services", href: "#offerings" },
+        { name: "About Us", href: "#aboutus" },
+        { name: "Contact", href: "#contact" },
+        { name: "Resources", href: "#resources" }
+    ];
+
+    // Render desktop and mobile navs after DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        const desktopNav = document.getElementById("desktopNav");
+        const mobileNav = document.getElementById("mobileNav");
+
+        // Desktop: larger menu items
+        desktopNav.innerHTML = menuItems.map(item => `
+            <a href="${item.href}" class="text-lg font-semibold text-white hover:text-brand-yellow transition">
+                ${item.name}
+            </a>
+        `).join("") + `
+        <a href="https://calendly.com/hello-intellidea/new-meeting" 
+           class="bg-brand-yellow hover:bg-[#ffcd36] text-brand-blue font-bold text-sm py-2.5 px-6 rounded-sm transition shadow-lg transform hover:scale-105">
+            Book an appointment
+        </a>`;
+
+        // Mobile: slightly smaller but still prominent
+        mobileNav.innerHTML = menuItems.map(item => `
+            <a href="${item.href}" class="text-base font-semibold text-white py-2 border-b border-white/10 hover:text-brand-yellow transition">
+                ${item.name}
+            </a>
+        `).join("") + `
+        <a href="https://calendly.com/hello-intellidea/new-meeting" 
+           class="bg-brand-yellow text-brand-blue font-bold py-3 text-center rounded mt-2">
+            Book an appointment
+        </a>`;
+
+        // Re-attach mobile nav links click handler to close the menu (ensure it works for the newly injected links)
+        const mobileMenuWrapper = document.getElementById('mobile-menu');
+        mobileMenuWrapper.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuWrapper.classList.add('hidden');
+                const btn = document.getElementById('mobile-menu-btn');
+                const icon = btn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    });
+</script>
+
+<script>
+    // Alpine Logic for Contact Form (kept unchanged)
+    function contactForm() {
+        return {
+            firstName: '',
+            lastName: '',
+            email: '',
+            whatsapp: '',   // This will hold the raw input but we won't send this directly
+            message: '',
+            iti: null,      // To store the intlTelInput instance
+
+            initialize() {
+                const input = document.querySelector("#whatsapp");
+                this.iti = window.intlTelInput(input, {
+                    initialCountry: "auto",
+                    geoIpLookup: function (callback) {
+                        fetch("https://ipapi.co/json")
+                        .then(res => res.json())
+                        .then(data => callback(data.country_code))
+                        .catch(() => callback("IN"));
+                    },
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+                });
+            },
+
+            submitForm() {
+                // Get full international number from intl-tel-input instance
+                const fullNumber = this.iti.getNumber();
+
+                if (!this.iti.isValidNumber()) {
+                    alert("Please enter a valid WhatsApp number including country code.");
+                    return;
+                }
+
+                const data = {
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    email: this.email,
+                    whatsapp: fullNumber,   // send full international number here
+                    message: this.message
+                };
+
+                fetch("https://script.google.com/macros/s/AKfycbzMhWX6HQx02IUoGYfPSJZe7anc_E0hlnYUoxqHIiWopQ6yxSbjPfhpvK8-BqJBekqJ/exec", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                    mode: "no-cors" // Added no-cors to prevent CORS errors since Google Script often has issues with direct cross-origin requests
+                })
+                .then(() => {
+                    // Since mode is no-cors, we can't read the response, so we assume success if no error is thrown
+                    alert("Thank you! Your message has been sent.");
+                    // Clear all fields
+                    this.firstName = '';
+                    this.lastName = '';
+                    this.email = '';
+                    this.whatsapp = '';
+                    this.message = '';
+                    this.iti.setNumber(''); // Clear the intl-tel-input field as well
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert("Error sending form. Please try again later.");
+                });
+            }
+        }
+    }
+</script>
+
+<script>
+    // Mobile Menu Toggle Logic (uses the same IDs as before; works with generated links)
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const icon = btn.querySelector('i');
+
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        
+        // Toggle Icon
+        if(menu.classList.contains('hidden')) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        } else {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        }
+    });
+
+    // If mobile nav links are added later (they are), we added click handlers after rendering above.
+</script>
+
+<script>
+    // Navbar Scroll Effect (Updated to maintain strict palette)
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-lg');
+            // Removed the change to darker blue to stick to strict #2C466D
+        } else {
+            navbar.classList.remove('shadow-lg');
+        }
+    });
+</script>
+
+<script>
+    // Intersection Observer for Sequential Animation (keeps same behaviour)
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3 // Trigger when 30% of the section is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add 'active' class to all items within the intersected section
+                    const items = entry.target.querySelectorAll('.process-item');
+                    items.forEach(item => {
+                        item.classList.remove('opacity-0', 'translate-y-4', 'translate-x-[-10px]');
+                        item.classList.add('opacity-100', 'translate-y-0', 'translate-x-0');
+                    });
+                    observer.unobserve(entry.target); // Run only once
+                }
+            });
+        }, observerOptions);
+
+        const processSection = document.getElementById('collaborative-process');
+        if(processSection) {
+            observer.observe(processSection);
+        }
+    });
+</script>
+
+<script>
+    // HERO AUDIO TOGGLE
+    document.addEventListener('DOMContentLoaded', () => {
+        const video = document.getElementById('heroVideo');
+        const toggleBtn = document.getElementById('audioToggle');
+        const icon = document.getElementById('audioIcon');
+        const label = document.getElementById('audioLabel');
+
+        // Utility: update UI based on muted state
+        function updateAudioUI(isMuted) {
+            // aria-pressed: true when unmuted (pressed = active)
+            toggleBtn.setAttribute('aria-pressed', String(!isMuted));
+            if (isMuted) {
+                // muted visuals
+                icon.classList.remove('fa-volume-high', 'fa-volume-up');
+                icon.classList.add('fa-volume-xmark'); // muted icon
+                toggleBtn.setAttribute('aria-label', 'Unmute video');
+                label.textContent = 'Unmute';
+            } else {
+                // unmuted visuals
+                icon.classList.remove('fa-volume-xmark', 'fa-volume-off');
+                icon.classList.add('fa-volume-high'); // loud icon
+                toggleBtn.setAttribute('aria-label', 'Mute video');
+                label.textContent = 'Mute';
+            }
+        }
+
+        // Initialize UI based on current video.muted (default: muted for autoplay)
+        updateAudioUI(video.muted);
+
+        toggleBtn.addEventListener('click', async (e) => {
+            // Toggle muted state
+            video.muted = !video.muted;
+
+            // If unmuting, attempt to play (some browsers require a play() after unmute)
+            if (!video.muted) {
+                try {
+                    await video.play();
+                } catch (err) {
+                    // If play fails, revert to muted and log
+                    console.warn('Unable to play video with sound:', err);
+                    video.muted = true;
+                }
+            }
+
+            // Update UI
+            updateAudioUI(video.muted);
+        });
+
+        // Observe external changes to the muted attribute (keeps UI in sync)
+        const obs = new MutationObserver(() => updateAudioUI(video.muted));
+        obs.observe(video, { attributes: true, attributeFilter: ['muted'] });
+    });
+</script>
+
+</body>
+</html>

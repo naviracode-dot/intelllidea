@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <title>Mauli Shah – Intellidea</title>
+
+  <style>
+    :root {
+      --brand-blue: #2C466D;
+      --brand-yellow: #F9C100;
+    }
+
+    body { padding-top: 80px; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+
+<body class="bg-white scroll-smooth text-[var(--brand-blue)]">
+
+
+<!-- ======================================================
+     NAVBAR
+======================================================= -->
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 bg-[var(--brand-blue)] shadow-md h-20">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="intellidea.png" alt="Intellidea" class="h-10 md:h-14 w-auto object-contain" />
+      </a>
+
+      <nav id="desktopNav" class="hidden lg:flex items-center gap-10"></nav>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-white">
+        <i class="fas fa-bars text-3xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden bg-[var(--brand-blue)] border-t border-white/20 absolute w-full left-0 top-20">
+    <div id="mobileNav" class="flex flex-col p-4 space-y-4"></div>
+  </div>
+</header>
+
+<script>
+  (function () {
+    const menuItems = [
+      { name: "Home", href: "../index.html" },
+      { name: "Solutions & Services", href: "../index.html#offerings" },
+      { name: "About Us", href: "../index.html#aboutus" },
+      { name: "Contact", href: "../index.html#contact" },
+      { name: "Resources", href: "../index.html#resources" }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const desktopNav = document.getElementById("desktopNav");
+      const mobileNav = document.getElementById("mobileNav");
+
+      desktopNav.innerHTML =
+        menuItems.map(
+          (i) =>
+            `<a href="${i.href}" class="text-lg font-semibold text-white hover:text-[var(--brand-yellow)] transition">${i.name}</a>`
+        ).join("") +
+        `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+          class="bg-[var(--brand-yellow)] hover:bg-[#ffcd36] text-[var(--brand-blue)] font-bold text-sm py-2.5 px-6 rounded-sm shadow-lg transition transform hover:scale-105">
+          Book an appointment
+        </a>`;
+
+      mobileNav.innerHTML =
+        menuItems.map(
+          (i) =>
+            `<a href="${i.href}" class="text-base font-semibold text-white py-2 border-b border-white/10">${i.name}</a>`
+        ).join("") +
+        `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+          class="bg-[var(--brand-yellow)] text-[var(--brand-blue)] font-bold py-3 text-center rounded mt-2">
+          Book an appointment
+        </a>`;
+    });
+
+    const btn = document.getElementById("mobile-menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    btn.addEventListener("click", () => menu.classList.toggle("hidden"));
+  })();
+</script>
+
+
+
+
+
+<!-- ======================================================
+     MAIN BIO SECTION
+======================================================= -->
+<section class="bg-gray-50 px-6 sm:px-12 py-12">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+
+    <!-- LEFT TEXT -->
+    <div>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">Mauli Shah</h1>
+      <p class="text-sm sm:text-base text-gray-600 mb-6">Associate – IT & Cybersecurity Expert</p>
+
+      <div class="space-y-4 leading-relaxed text-base">
+
+        <p>
+          Mauli Shah is a dynamic and results-driven <strong>IT & Cybersecurity expert</strong> with over a decade of specialised experience.
+          With a strong foundation in <strong>Artificial Intelligence</strong> and a deep passion for emerging technologies, she brings a
+          strategic and analytical approach to identifying, analysing, and mitigating cybersecurity threats across industries.
+        </p>
+
+        <p>
+          She holds multiple industry-recognised credentials including <strong>CISA, CEH, and ISO 27001 Lead Auditor</strong>, equipping her
+          to deliver robust, compliant, and scalable cybersecurity frameworks. Her expertise spans <strong>security audits, vulnerability
+          assessments, risk evaluation, incident response planning, and enterprise-wide security training programs</strong>.
+        </p>
+
+        <p>
+          Through her hands-on experience, Mauli excels at transforming complex technical insights into <strong>clear, actionable strategies</strong>
+          that empower organisations to build resilient, future-ready cybersecurity postures.
+        </p>
+
+        <p>
+          At <strong>Intellidea</strong>, Mauli plays a pivotal role in <strong>training, advising, and handholding businesses</strong> as they strengthen 
+          their digital infrastructure, enhance compliance readiness, and cultivate a culture of cybersecurity excellence.
+        </p>
+
+        <p>
+          Her mission is to help organisations stay ahead of evolving threats through a combination of strategic foresight,
+          technical expertise, and continuous innovation.
+        </p>
+
+      </div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="flex md:justify-end h-[90vh] md:h-[100vh]">
+      <img src="../assets/mauli_shah.png"
+           alt="Mauli Shah"
+           class="w-full max-w-sm md:max-w-md rounded-lg shadow-lg object-cover object-top" />
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+<!-- ======================================================
+     FOOTER
+======================================================= -->
+<footer class="bg-[var(--brand-blue)] text-gray-200 py-5 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm">
+
+    <div class="mb-3 sm:mb-0">
+      Copyright – 2025 |
+      <span class="text-white font-medium">Intellidea Consultancy Services Pvt. Ltd.</span>
+    </div>
+
+    <div class="flex space-x-6">
+      <a href="../privacy.html" class="hover:text-[var(--brand-yellow)] transition">Privacy Policy</a>
+      <a href="../cookie.html" class="hover:text-[var(--brand-yellow)] transition">Cookie Policy</a>
+      <a href="../terms.html" class="hover:text-[var(--brand-yellow)] transition">Terms & Conditions</a>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

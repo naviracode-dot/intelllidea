@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <title>Dr. R. B. Barman – Intellidea</title>
+
+  <style>
+    :root {
+      --brand-blue: #2C466D;
+      --brand-yellow: #F9C100;
+    }
+    body { padding-top: 80px; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+
+<body class="bg-white scroll-smooth text-[var(--brand-blue)]">
+
+<!-- ======================================================
+     NAVBAR
+======================================================= -->
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[var(--brand-blue)] shadow-md h-20">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+
+      <a href="../index.html" class="flex items-center gap-3" aria-label="Home">
+        <img src="intellidea.png" alt="Intellidea" class="h-10 md:h-14 w-auto object-contain" />
+      </a>
+
+      <nav id="desktopNav" class="hidden lg:flex items-center gap-10"></nav>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+        <i class="fas fa-bars text-3xl"></i>
+      </button>
+
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden bg-[var(--brand-blue)] border-t border-white/20 absolute w-full left-0 top-20 shadow-xl">
+    <div id="mobileNav" class="flex flex-col p-4 space-y-4"></div>
+  </div>
+</header>
+
+<script>
+(function () {
+  const menuItems = [
+    { name: "Home", href: "../index.html" },
+    { name: "Solutions & Services", href: "../index.html#offerings" },
+    { name: "About Us", href: "../index.html#aboutus" },
+    { name: "Contact", href: "../index.html#contact" },
+    { name: "Resources", href: "../index.html#resources" }
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const desktopNav = document.getElementById('desktopNav');
+    const mobileNav = document.getElementById('mobileNav');
+
+    desktopNav.innerHTML = menuItems.map(item => `
+      <a href="${item.href}" class="text-lg font-semibold text-white hover:text-[var(--brand-yellow)] transition">
+        ${item.name}
+      </a>
+    `).join('') + `
+      <a href="https://calendly.com/hello-intellidea/new-meeting"
+        class="bg-[var(--brand-yellow)] hover:bg-[#ffcd36] text-[var(--brand-blue)] font-bold text-sm py-2.5 px-6 rounded-sm shadow-lg transform hover:scale-105 transition">
+        Book an appointment
+      </a>`;
+
+    mobileNav.innerHTML = menuItems.map(item => `
+      <a href="${item.href}" class="text-base font-semibold text-white py-2 border-b border-white/10 hover:text-[var(--brand-yellow)] transition">
+        ${item.name}
+      </a>
+    `).join('') + `
+      <a href="https://calendly.com/hello-intellidea/new-meeting"
+        class="bg-[var(--brand-yellow)] text-[var(--brand-blue)] font-bold py-3 text-center rounded mt-2">
+        Book an appointment
+      </a>`;
+  });
+
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    menu.classList.toggle('hidden');
+    const icon = btn.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+  });
+})();
+</script>
+
+
+<!-- ======================================================
+     MAIN SECTION — DR. R. B. BARMAN
+======================================================= -->
+<section class="bg-gray-50 px-6 sm:px-12 py-12">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+
+    <!-- LEFT TEXT -->
+    <div>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">
+        Dr. R. B. Barman
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 mb-6">Advisor</p>
+
+      <div class="space-y-4 text-base leading-relaxed">
+
+        <p>
+          Dr. R. B. Barman, former Executive Director of the Reserve Bank of India, is a highly esteemed expert in statistics, applied economics, and payment systems. With a distinguished career spanning decades, he has played a pivotal role in shaping India’s financial and payments infrastructure.
+        </p>
+
+        <p>
+          He was instrumental in the development of the Reserve Bank’s Data Warehouse for Business Intelligence and in driving key digital payment systems including RTGS, NEFT, and NECS. He also played a foundational role in the establishment of the National Payments Corporation of India (NPCI) as a not-for-profit organization.
+        </p>
+
+        <p>
+          As Adviser to NPCI since 2009, Dr. Barman continues to guide the organization on technology matters, supporting its emergence as a global leader in retail payments, including the development and widespread adoption of the Unified Payments Interface (UPI).
+        </p>
+
+        <p>
+          Dr. Barman also served as Chairman of the National Statistical Commission (Ex-officio Minister of State, Government of India) from 2016–18, where he set a strong direction for modernizing India’s statistical systems through digital transformation.
+        </p>
+
+        <p>
+          His leadership roles include serving as President of The Indian Econometric Society and Vice-Chairman of the Irving Fisher Committee on Central Bank Statistics at the Bank for International Settlements (BIS).
+        </p>
+
+        <p>
+          Dr. Barman is the recipient of the prestigious National Award in Official Statistics – 2021, instituted by the Government of India in memory of Prof. P. C. Mahalanobis.
+        </p>
+
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE IMAGE -->
+    <div class="flex md:justify-end">
+      <img src="../assets/4.png"
+           alt="Dr. R. B. Barman"
+           class="w-full max-w-sm md:max-w-md rounded-lg shadow-lg object-cover object-top" />
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ======================================================
+     FOOTER
+======================================================= -->
+<footer class="bg-[var(--brand-blue)] text-gray-200 py-5 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm">
+
+    <div class="mb-3 sm:mb-0">
+      Copyright – 2025 |
+      <span class="text-white font-medium">Intellidea Consultancy Services Pvt. Ltd.</span>
+    </div>
+
+    <div class="flex space-x-6">
+      <a href="../privacy.html" class="hover:text-[var(--brand-yellow)] transition">Privacy Policy</a>
+      <a href="../cookie.html" class="hover:text-[var(--brand-yellow)] transition">Cookie Policy</a>
+      <a href="../terms.html" class="hover:text-[var(--brand-yellow)] transition">Terms & Conditions</a>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

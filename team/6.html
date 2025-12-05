@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <title>Dr. Shashi Bhushan Singh – Intellidea</title>
+
+  <style>
+    :root {
+      --brand-blue: #2C466D;
+      --brand-yellow: #F9C100;
+    }
+
+    /* Fix navbar overlap */
+    body { padding-top: 80px; }
+
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+
+<body class="bg-white scroll-smooth text-[var(--brand-blue)]">
+
+<!-- ======================================================
+     INTELLIDEA NAVBAR
+======================================================= -->
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[var(--brand-blue)] shadow-md h-20">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="../index.html" class="flex items-center gap-3" aria-label="Home">
+        <img src="intellidea.png" alt="Intellidea" class="h-10 md:h-14 w-auto object-contain" />
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav id="desktopNav" class="hidden lg:flex items-center gap-10" aria-label="Primary"></nav>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none" aria-label="Toggle menu">
+        <i class="fas fa-bars text-3xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden bg-[var(--brand-blue)] border-t border-white/20 absolute w-full left-0 top-20 shadow-xl">
+    <div id="mobileNav" class="flex flex-col p-4 space-y-4"></div>
+  </div>
+</header>
+
+<script>
+  (function () {
+    const menuItems = [
+      { name: "Home", href: "../index.html" },
+      { name: "Solutions & Services", href: "../index.html#offerings" },
+      { name: "About Us", href: "../index.html#aboutus" },
+      { name: "Contact", href: "../index.html#contact" },
+      { name: "Resources", href: "../index.html#resources" }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const desktopNav = document.getElementById('desktopNav');
+      const mobileNav = document.getElementById('mobileNav');
+
+      desktopNav.innerHTML = menuItems.map(item => `
+        <a href="${item.href}" class="text-lg font-semibold text-white hover:text-[var(--brand-yellow)] transition">${item.name}</a>
+      `).join('') + `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+           class="bg-[var(--brand-yellow)] hover:bg-[#ffcd36] text-[var(--brand-blue)] font-bold text-sm py-2.5 px-6 rounded-sm transition shadow-lg">
+          Book an appointment
+        </a>`;
+
+      mobileNav.innerHTML = menuItems.map(item => `
+        <a href="${item.href}" class="text-base font-semibold text-white py-2 border-b border-white/10 hover:text-[var(--brand-yellow)]">
+          ${item.name}
+        </a>
+      `).join('') + `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+           class="bg-[var(--brand-yellow)] text-[var(--brand-blue)] font-bold py-3 text-center rounded mt-2">
+          Book an appointment
+        </a>`;
+    });
+
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      const icon = btn.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+  })();
+</script>
+
+
+<!-- ======================================================
+     MAIN SECTION — DR. SHASHI BHUSHAN SINGH BIO
+======================================================= -->
+<section class="bg-gray-50 px-6 sm:px-12 py-12 text-[var(--brand-blue)]">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+
+    <!-- LEFT TEXT -->
+    <div>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">
+        Dr. Shashi Bhushan Singh
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 mb-6">Scientist, R & D</p>
+
+      <div class="space-y-4 text-base leading-relaxed">
+
+        <p>
+          Dr. Shashi Bhushan Singh is a distinguished expert with a blend of technical, academic, and administrative competence in materials, manufacturing, and management, with over 4 decades of experience, including director roles at DRDO (Defence R&D Organisation).
+        </p>
+
+        <p>
+          As an Outstanding Scientist & former Director of the Naval Materials Research Laboratory (NMRL), Institute of Technology Management (ITM), and Principal Associate Director at the Vehicle Research & Development Establishment (VRDE), DRDO, he has spearheaded critical R&D projects in defence technology, materials science, and manufacturing innovation.
+        </p>
+
+        <p>
+          He has played a pivotal role in technology development, project management, strategic planning, and leadership training for DRDO and the Indian Armed Forces. His expertise includes metallurgy, foundry technology, rapid prototyping, process optimisation, and product development, with multiple patents and publications to his credit.
+        </p>
+
+        <p>
+          Dr. Singh has supported advanced initiatives in AI Products, rapid prototyping, and the manufacturing of drone technologies and defence-grade systems.
+        </p>
+
+        <p>
+          Notable achievements include leadership coaching, team building, and mentoring over 100 scientists and technical officers across mission-critical DRDO projects. He has collaborated with multiple ministries and defence bodies on futuristic strategic initiatives, contributing to India’s technological leadership.
+        </p>
+
+        <p>
+          He is the author of the book <strong>“Applied Thermodynamics”</strong> and holds the prestigious degree of <strong>D.Sc (Doctor of Science in Management)</strong>. An alumnus of IIT Kharagpur, he earned his M.Tech and Ph.D. in Metallurgical Engineering, along with an International Executive Diploma in Project Management.
+        </p>
+
+        <p>
+          After superannuation from DRDO, he has served as an Emeritus Professor, consultant, and advisor in advanced research fields, and has received several honours including the DRDO Technology Awards and Lifetime Achievement Awards.
+        </p>
+
+      </div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="flex md:justify-end">
+      <img src="../assets/SB.jpg"
+           alt="Dr. Shashi Bhushan Singh"
+           class="w-full max-w-sm md:max-w-md rounded-lg shadow-lg object-cover object-top" />
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ======================================================
+     FOOTER
+======================================================= -->
+<footer class="bg-[var(--brand-blue)] text-gray-200 py-5 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm">
+    <div class="mb-3 sm:mb-0">
+      Copyright – 2025 |
+      <span class="text-white font-medium">Intellidea Consultancy Services Pvt. Ltd.</span>
+    </div>
+
+    <div class="flex space-x-6">
+      <a href="../privacy.html" class="hover:text-[var(--brand-yellow)] transition">Privacy Policy</a>
+      <a href="../cookie.html" class="hover:text-[var(--brand-yellow)] transition">Cookie Policy</a>
+      <a href="../terms.html" class="hover:text-[var(--brand-yellow)] transition">Terms & Conditions</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

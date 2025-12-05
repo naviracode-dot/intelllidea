@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <title>Cookies</title>
+  <style>[x-cloak] { display: none !important; }</style>
+</head>
+
+<body class="bg-white scroll-smooth pt-20"><!-- <- pt-20 prevents navbar overlap -->
+
+<!-- START: Reusable Navbar -->
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#2C466D] shadow-md h-20">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-3" aria-label="Home">
+        <picture>
+          <!-- swap src to your logo file -->
+          <img src="intellidea.png" alt="Intellidea" class="h-10 md:h-14 w-auto object-contain" width="220" height="56" loading="eager" />
+        </picture>
+      </a>
+
+      <!-- Desktop navigation (populated by JS) -->
+      <nav id="desktopNav" class="hidden lg:flex items-center gap-10" aria-label="Primary"></nav>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
+        <i class="fas fa-bars text-3xl" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu (populated by JS) -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-[#2C466D] border-t border-white/20 absolute w-full left-0 top-20 shadow-xl" role="dialog" aria-modal="false">
+    <div id="mobileNav" class="flex flex-col p-4 space-y-4"></div>
+  </div>
+</header>
+<!-- END: Reusable Navbar -->
+
+<script>
+  (function () {
+    // Edit this array to change menu items and order
+    const menuItems = [
+      { name: "Home", href: "index.html" },
+      { name: "Solutions & Services", href: "index.html#offerings" },
+      { name: "About Us", href: "index.html#aboutus" },
+      { name: "Contact", href: "index.html#contact" },
+      { name: "Resources", href: "index.html#resources" }
+    ];
+
+    // Render navs after DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const desktopNav = document.getElementById('desktopNav');
+      const mobileNav = document.getElementById('mobileNav');
+
+      // Desktop: larger menu items + CTA
+      desktopNav.innerHTML = menuItems.map(item => `
+        <a href="${item.href}" class="text-lg font-semibold text-white hover:text-[#F9C100] transition">
+          ${item.name}
+        </a>
+      `).join('') + `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+           class="bg-[#F9C100] hover:bg-[#ffcd36] text-[#2C466D] font-bold text-sm py-2.5 px-6 rounded-sm transition shadow-lg transform hover:scale-105">
+          Book an appointment
+        </a>`;
+
+      // Mobile: stacked items + CTA
+      mobileNav.innerHTML = menuItems.map(item => `
+        <a href="${item.href}" class="text-base font-semibold text-white py-2 border-b border-white/10 hover:text-[#F9C100] transition">
+          ${item.name}
+        </a>
+      `).join('') + `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+           class="bg-[#F9C100] text-[#2C466D] font-bold py-3 text-center rounded mt-2">
+          Book an appointment
+        </a>`;
+
+      // Close mobile menu when a link is clicked
+      document.querySelectorAll('#mobileNav a').forEach(link => {
+        link.addEventListener('click', () => {
+          const mobileMenu = document.getElementById('mobile-menu');
+          mobileMenu.classList.add('hidden');
+          const btn = document.getElementById('mobile-menu-btn');
+          btn.setAttribute('aria-expanded', 'false');
+          const icon = btn.querySelector('i');
+          if (icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+      });
+    });
+
+    // Mobile toggle behaviour
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('hidden');
+
+      const icon = btn.querySelector('i');
+      if (menu.classList.contains('hidden')) {
+        if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+      } else {
+        if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+      }
+    });
+  })();
+</script>
+
+<!-- Example content below navbar (colours switched to brand hexs) -->
+<section id="serve" class="bg-white py-12 px-6 md:px-20">
+  <!-- Header -->
+  <div class="text-center mb-10">
+    <h2 class="text-3xl md:text-4xl font-bold text-[#2C466D]">Cookie Policy</h2>
+  </div>
+
+  <!-- Policy Content -->
+  <div class="max-w-5xl mx-auto text-gray-800 text-base leading-relaxed space-y-6">
+    <p>
+      This Cookie Policy applies to all websites, applications, and branded pages on third-party platforms (such as Facebook and YouTube) that are operated by or on behalf of Intellidea.
+      By using Intellidea’s sites, you agree to our use of cookies as outlined in this policy. If you do not consent, you can adjust your browser settings to disable cookies. However, doing so may affect the functionality and user experience of our website.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#2C466D]">What Are Cookies?</h3>
+    <p>
+      Cookies are small text files stored on your computer, smartphone, or tablet when you visit a website. They typically contain:
+    </p>
+    <ul class="list-disc list-inside space-y-1 ml-4">
+      <li>The name of the website they originate from</li>
+      <li>Their duration (how long they stay on your device)</li>
+      <li>A unique identifier for tracking purposes</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold text-[#2C466D]">Why Do We Use Cookies?</h3>
+    <p>At Intellidea, we use cookies to:</p>
+    <ul class="list-disc list-inside space-y-1 ml-4">
+      <li>Improve website functionality and user experience</li>
+      <li>Personalize content based on user preferences</li>
+      <li>Analyze traffic and optimize website performance</li>
+      <li>Enable social media sharing features</li>
+    </ul>
+    <p>We do not use cookies to personally identify users.</p>
+
+    <h3 class="text-xl font-semibold text-[#2C466D]">Types of Cookies We Use</h3>
+    <ul class="list-disc list-inside space-y-1 ml-4">
+      <li><strong>Session Cookies</strong> – Active only while you browse our website and deleted when you close your browser.</li>
+      <li><strong>Persistent Cookies</strong> – Stored on your device for a set period to remember preferences and enhance future visits.</li>
+    </ul>
+    <p>You can manage or disable cookies through your browser settings, but this may limit certain website features.</p>
+
+    <h3 class="text-xl font-semibold text-[#2C466D]">Google Analytics & Performance Tracking</h3>
+    <p>
+      We use Google Analytics to monitor website traffic and improve usability. These cookies help us analyze user behavior in an anonymous manner.
+      Google’s privacy policy can be found at:
+      <a href="https://www.google.com/privacy_policy.html" class="text-[#2C466D] underline hover:text-[#16304a]">www.google.com/privacy_policy.html</a>
+    </p>
+  </div>
+</section>
+
+<footer class="bg-[#2C466D] text-gray-200 py-6 border-t border-white/20">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm">
+        <div class="mb-4 md:mb-0 text-center md:text-left">
+            Copyright – 2025 | <span class="text-white font-medium">Intellidea Consultancy Services Pvt. Ltd.</span>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 items-center">
+            <a href="privacy.html" class="hover:text-[#F9C100] transition">Privacy Policy</a>
+            <a href="cookie.html" class="hover:text-[#F9C100] transition">Cookie Policy</a>
+            <a href="terms.html" class="hover:text-[#F9C100] transition">Terms & Conditions</a>
+            <a href="https://wa.me/919082378708" class="bg-green-500 text-white px-4 py-1.5 rounded-full flex items-center gap-2 hover:bg-green-600 transition shadow-sm">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

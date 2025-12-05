@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <title>Viresh Patel – Intellidea</title>
+
+  <style>
+    :root {
+      --brand-blue: #2C466D;
+      --brand-yellow: #F9C100;
+    }
+
+    /* Fix navbar overlap (header height = 80px) */
+    body { padding-top: 80px; }
+
+    [x-cloak] { display: none !important; }
+
+    /* small nicety for long biography readability on narrow screens */
+    .bio-content p { text-wrap: balance; }
+  </style>
+</head>
+
+<body class="bg-white scroll-smooth text-[var(--brand-blue)]">
+
+<!-- ======================================================
+     INTELLIDEA NAVBAR (BRAND COLORS + FULL FUNCTIONALITY)
+======================================================= -->
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[var(--brand-blue)] shadow-md h-20">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="../index.html" class="flex items-center gap-3" aria-label="Home">
+        <picture>
+          <!-- swap src to your logo file -->
+          <img src="intellidea.png" alt="Intellidea" class="h-10 md:h-14 w-auto object-contain" width="220" height="56" loading="eager" />
+        </picture>
+      </a>
+
+      <!-- Desktop navigation (populated by JS) -->
+      <nav id="desktopNav" class="hidden lg:flex items-center gap-10" aria-label="Primary"></nav>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
+        <i class="fas fa-bars text-3xl" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu (populated by JS) -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-[var(--brand-blue)] border-t border-white/20 absolute w-full left-0 top-20 shadow-xl" role="dialog" aria-modal="false">
+    <div id="mobileNav" class="flex flex-col p-4 space-y-4"></div>
+  </div>
+</header>
+<!-- END: Reusable Navbar -->
+
+<script>
+  (function () {
+    // Edit this array to change menu items and order
+    const menuItems = [
+      { name: "Home", href: "../index.html" },
+      { name: "Solutions & Services", href: "../index.html#offerings" },
+      { name: "About Us", href: "../index.html#aboutus" },
+      { name: "Contact", href: "../index.html#contact" },
+      { name: "Resources", href: "../index.html#resources" }
+    ];
+
+    // Render navs after DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const desktopNav = document.getElementById('desktopNav');
+      const mobileNav = document.getElementById('mobileNav');
+
+      // Desktop: larger menu items + CTA
+      desktopNav.innerHTML = menuItems.map(item => `
+        <a href="${item.href}" class="text-lg font-semibold text-white hover:text-[var(--brand-yellow)] transition">
+          ${item.name}
+        </a>
+      `).join('') + `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+           class="bg-[var(--brand-yellow)] hover:bg-[#ffcd36] text-[var(--brand-blue)] font-bold text-sm py-2.5 px-6 rounded-sm transition shadow-lg transform hover:scale-105">
+          Book an appointment
+        </a>`;
+
+      // Mobile: stacked items + CTA
+      mobileNav.innerHTML = menuItems.map(item => `
+        <a href="${item.href}" class="text-base font-semibold text-white py-2 border-b border-white/10 hover:text-[var(--brand-yellow)] transition">
+          ${item.name}
+        </a>
+      `).join('') + `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+           class="bg-[var(--brand-yellow)] text-[var(--brand-blue)] font-bold py-3 text-center rounded mt-2">
+          Book an appointment
+        </a>`;
+
+      // Close mobile menu when a link is clicked
+      document.querySelectorAll('#mobileNav a').forEach(link => {
+        link.addEventListener('click', () => {
+          const mobileMenu = document.getElementById('mobile-menu');
+          mobileMenu.classList.add('hidden');
+          const btn = document.getElementById('mobile-menu-btn');
+          btn.setAttribute('aria-expanded', 'false');
+          const icon = btn.querySelector('i');
+          if (icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+      });
+    });
+
+    // Mobile toggle behaviour
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('hidden');
+
+      const icon = btn.querySelector('i');
+      if (menu.classList.contains('hidden')) {
+        if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+      } else {
+        if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+      }
+    });
+  })();
+</script>
+
+<!-- ======================================================
+     MAIN SECTION — VIRESH PATEL BIO + IMAGE
+======================================================= -->
+<section class="bg-gray-50 text-[var(--brand-blue)] px-6 sm:px-12 py-12">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+
+    <!-- LEFT TEXT -->
+    <div class="bio-content">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 text-[var(--brand-blue)]">
+        Viresh Patel
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 mb-6">Founder & CEO</p>
+
+      <div class="space-y-4 text-base leading-relaxed text-[var(--brand-blue)]">
+        <p>
+          A dynamic, versatile & result-oriented growth-preneur with 28+ years of experience spanning diverse domains across IT & IT Enabled service, BFSI, IT Education, Online Assessments, and US Healthcare. Known for his insight and hands-on leadership in cross-functional roles, Viresh has navigated complex challenges and led mission-critical projects to deliver desired outcomes while establishing and nurturing strong client relationships in India, US, Europe and Middle East.
+        </p>
+
+        <p>
+          With a successful career of over two and half decades, Viresh has demonstrated finesse in client relationships and partnering with large corporates, universities, PSUs, regulators, and government bodies while spearheading large projects and strategic initiatives enabling businesses to achieve growth with operational excellence and customer delight.
+        </p>
+
+        <p>
+          In one of his earlier roles, Viresh served as Vice President at National Stock Exchange (NSE) Group Co. for over 14+ years. Prior to that he has worked with NIIT Ltd., Infovision Software, ISMART GLOBAL. He is a Gold Medalist in Systems Management & Software Engineering with Post Graduation in Marketing Management and Leadership Excellence from IIM Calcutta. He has won several awards including NIIT Chairman Excellence Award and NSEIT CEO Special Recognition award among others.
+        </p>
+
+        <p>
+          As the driving force behind Intellidea, Viresh combines his cross-functional experience across diverse domain knowledge with a passion for mentoring teams and empowering clients to create an ecosystem that helps them transform their big ideas into tangible outcomes, overcome challenges, unlock growth opportunities, and thrive.
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="flex md:justify-end">
+      <!-- Use a clean filename (no spaces) or encode space as %20. Update the path to match your project. -->
+      <img src="../assets/viresh.png"
+           alt="Viresh Patel"
+           class="w-full max-w-sm md:max-w-md rounded-lg shadow-lg object-cover object-top" />
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+     INTELLIDEA FOOTER (BRAND COLORS)
+======================================================= -->
+<footer class="bg-[var(--brand-blue)] text-gray-200 py-5 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm">
+    <div class="mb-3 sm:mb-0">
+      Copyright – 2025 |
+      <span class="text-white font-medium">Intellidea Consultancy Services Pvt. Ltd.</span>
+    </div>
+
+    <div class="flex space-x-6">
+      <a href="../privacy.html" class="hover:text-[var(--brand-yellow)] transition">Privacy Policy</a>
+      <a href="../cookie.html" class="hover:text-[var(--brand-yellow)] transition">Cookie Policy</a>
+      <a href="../terms.html" class="hover:text-[var(--brand-yellow)] transition">Terms & Conditions</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <title>CA Hiten Shah – Intellidea</title>
+
+  <style>
+    :root {
+      --brand-blue: #2C466D;
+      --brand-yellow: #F9C100;
+    }
+
+    /* Fix navbar overlap */
+    body { padding-top: 80px; }
+
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+
+<body class="bg-white scroll-smooth text-[var(--brand-blue)]">
+
+<!-- ======================================================
+     INTELLIDEA NAVBAR (BRAND COLORS + FULL FUNCTIONALITY)
+======================================================= -->
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#2C466D] shadow-md h-20">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a href="../index.html" class="flex items-center gap-3" aria-label="Home">
+        <img src="intellidea.png" alt="Intellidea" class="h-10 md:h-14 w-auto object-contain" />
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav id="desktopNav" class="hidden lg:flex items-center gap-10" aria-label="Primary"></nav>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+        <i class="fas fa-bars text-3xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-[#2C466D] border-t border-white/20 absolute w-full left-0 top-20 shadow-xl">
+    <div id="mobileNav" class="flex flex-col p-4 space-y-4"></div>
+  </div>
+</header>
+
+<script>
+  (function () {
+    const menuItems = [
+      { name: "Home", href: "../index.html" },
+      { name: "Solutions & Services", href: "../index.html#offerings" },
+      { name: "About Us", href: "../index.html#aboutus" },
+      { name: "Contact", href: "../index.html#contact" },
+      { name: "Resources", href: "../index.html#resources" }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const desktopNav = document.getElementById('desktopNav');
+      const mobileNav = document.getElementById('mobileNav');
+
+      desktopNav.innerHTML = menuItems.map(item => `
+        <a href="${item.href}" class="text-lg font-semibold text-white hover:text-[#F9C100] transition">${item.name}</a>
+      `).join('') + `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+           class="bg-[#F9C100] hover:bg-[#ffcd36] text-[#2C466D] font-bold text-sm py-2.5 px-6 rounded-sm shadow-lg transition transform hover:scale-105">
+          Book an appointment
+        </a>`;
+
+      mobileNav.innerHTML = menuItems.map(item => `
+        <a href="${item.href}" class="text-base font-semibold text-white py-2 border-b border-white/10">${item.name}</a>
+      `).join('') + `
+        <a href="https://calendly.com/hello-intellidea/new-meeting"
+           class="bg-[#F9C100] text-[#2C466D] font-bold py-3 text-center rounded mt-2">
+          Book an appointment
+        </a>`;
+
+      document.querySelectorAll('#mobileNav a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('mobile-menu').classList.add('hidden');
+        });
+      });
+    });
+
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  })();
+</script>
+
+<!-- ======================================================
+     MAIN SECTION — BIO + IMAGE
+======================================================= -->
+<section class="bg-gray-50 px-6 sm:px-12 py-12 text-[var(--brand-blue)]">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+
+    <!-- LEFT TEXT BLOCK -->
+    <div>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">CA Hiten Shah</h2>
+      <p class="text-sm sm:text-base text-gray-600 mb-6">Associate – Finance & Risk Management</p>
+
+      <div class="space-y-4 text-base leading-relaxed">
+
+        <p>
+          CA Hiten Shah is a seasoned finance professional with over 37 years of extensive experience, specializing in Family Business Advisory and guiding both listed and unlisted companies through IPOs and FPOs, with deep expertise particularly in IPO strategy and execution.
+        </p>
+
+        <p>
+          He serves as an Independent Director on the boards of several NSE and BSE-listed companies, contributing his expertise in governance, finance, and risk management.
+        </p>
+
+        <p>
+          A respected thought leader in audit and accounts, he has authored insightful articles for the <i>Sales Tax Review</i>, published by The Goods and Service Tax Practitioners’ Association of Maharashtra.
+        </p>
+
+        <p>
+          He holds certifications from the Indian School of Business (ISB) and ICAI, along with specialized credentials in Internal Audit from the Bombay Chartered Accountants’ Society, and IFRS, Valuation, and Forensic Audit & Fraud Detection from ICAI.
+        </p>
+
+        <p>
+          As a faculty member for Accounts & Audit at NACEN (now NACIN), he has trained senior leadership across financial and regulatory institutions. He has also delivered expert sessions at the WIRC of ICAI, The Goods and Service Tax Practitioners’ Association of Maharashtra, and multiple chambers of tax consultants.
+        </p>
+
+      </div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="flex md:justify-end h-[90vh] md:h-[100vh]">
+      <img src="../assets/hiten_shah.png"
+           alt="CA Hiten Shah"
+           class="w-full max-w-sm md:max-w-md rounded-lg shadow-lg object-cover object-top" />
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ======================================================
+     INTELLIDEA FOOTER
+======================================================= -->
+<footer class="bg-[var(--brand-blue)] text-gray-200 py-5 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm">
+
+    <div class="mb-3 sm:mb-0">
+      Copyright – 2025 |
+      <span class="text-white font-medium">Intellidea Consultancy Services Pvt. Ltd.</span>
+    </div>
+
+    <div class="flex space-x-6">
+      <a href="../privacy.html" class="hover:text-[var(--brand-yellow)] transition">Privacy Policy</a>
+      <a href="../cookie.html" class="hover:text-[var(--brand-yellow)] transition">Cookie Policy</a>
+      <a href="../terms.html" class="hover:text-[var(--brand-yellow)] transition">Terms & Conditions</a>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
