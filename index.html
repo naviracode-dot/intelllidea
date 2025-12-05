@@ -1043,21 +1043,143 @@
         </div>
 
         <!-- Right Side: Contact Form -->
-        <div x-data="contactForm()" x-init="initialize">
-          <h3 class="text-[#fff] font-semibold text-lg mb-4">Ready to Take Your Business to the Next Level?</h3>
-          <form @submit.prevent="submitForm" class="space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input type="text" x-model="firstName" required placeholder="First name" class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
-              <input type="text" x-model="lastName" required placeholder="Last name" class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input type="email" x-model="email" required placeholder="Email" class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
-              <input id="whatsapp" type="tel" required placeholder="WhatsApp Number" class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
-            </div>
-            <textarea x-model="message" required rows="4" placeholder="Message" class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors"></textarea>
-            <button type="submit" class="border border-[#F9C100] text-[#F9C100] px-6 py-2 rounded-full hover:bg-[#F9C100] hover:text-[#2C466D] transition duration-300 font-bold uppercase tracking-wide">Submit</button>
-          </form>
-        </div>
+<div x-data="contactForm()" x-init="initialize()" class="max-w-xl">
+  <h3 class="text-white font-semibold text-lg mb-4">Ready to Take Your Business to the Next Level?</h3>
+
+  <!-- status message -->
+  <div x-show="statusMessage" x-text="statusMessage" class="mb-3 text-sm"></div>
+
+  <form @submit.prevent="submitForm" class="space-y-4" novalidate>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input type="text" x-model="firstName" required placeholder="First name"
+             class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
+      <input type="text" x-model="lastName" required placeholder="Last name"
+             class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input type="email" x-model="email" required placeholder="Email"
+             class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
+      <!-- IMPORTANT: added x-model="whatsapp" so Alpine keeps the value in sync -->
+      <input id="whatsapp" x-model="whatsapp" type="tel" required placeholder="WhatsApp Number"
+             class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
+    </div>
+
+    <textarea x-model="message" required rows="4" placeholder="Message"
+              class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors"></textarea>
+
+    <button type="submit"
+            :disabled="sending"
+            :class="sending ? 'opacity-60 cursor-not-allowed' : ''"
+            class="border border-[#F9C100] text-[#F9C100] px-6 py-2 rounded-full hover:bg-[#F9C100] hover:text-[#2C466D] transition duration-300 font-bold uppercase tracking-wide">
+      <span x-show="!sending">Submit</span>
+      <span x-show="sending">Sending…</span>
+    </button>
+  </form>
+</div>
+
+<!-- keep your existing HTML (inputs with ids) — only replace the script below -->
+<script>
+(function(){
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzZ1AJRmySxR8nssDkNDYuUL6NfOv9vh904_YaDo-ZVU12NTl3nDdWB0PLV2NbaUDY6/exec";
+  const SECRET_TOKEN = "fQM7PxRBOqPtyE18mpe1s0ZtteEicajMhUJhT8sybCmSKxR2xFfC8tPdiotBuYVR";
+
+  const form = document.querySelector('form');
+  const statusDiv = document.querySelector('[x-show="statusMessage"]') || (()=>{ const d=document.createElement('div'); form.parentNode.insertBefore(d, form); return d; })();
+
+  function setStatus(msg){
+    statusDiv.textContent = msg;
+    console.log('[contactForm status]', msg);
+  }
+
+  function isValidEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+  // Grab inputs by model or id (support both)
+  const firstInput = document.querySelector('[x-model="firstName"]') || document.querySelector('input[name="firstName"]');
+  const lastInput  = document.querySelector('[x-model="lastName"]')  || document.querySelector('input[name="lastName"]');
+  const emailInput = document.querySelector('[x-model="email"]')     || document.querySelector('input[type="email"]');
+  const whatsappInput = document.querySelector('#whatsapp') || document.querySelector('[x-model="whatsapp"]') || null;
+  const messageInput = document.querySelector('[x-model="message"]') || document.querySelector('textarea');
+
+  if (!form) { console.error('Contact form not found'); return; }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault(); // prevent reload no matter what
+    setStatus('');
+
+    const firstName = firstInput ? firstInput.value.trim() : '';
+    const lastName  = lastInput  ? lastInput.value.trim() : '';
+    const email     = emailInput ? emailInput.value.trim() : '';
+    const message   = messageInput ? messageInput.value.trim() : '';
+
+    if (!firstName || !lastName || !email || !message) {
+      setStatus('Please fill all required fields.');
+      return;
+    }
+    if (!isValidEmail(email)) {
+      setStatus('Please enter a valid email address.');
+      return;
+    }
+
+    // phone handling — prefer intl-tel-input if present
+    let fullNumber = whatsappInput ? whatsappInput.value.trim() : '';
+    if (window.intlTelInput && whatsappInput) {
+      try {
+        const iti = window.intlTelInputGlobals.getInstance(whatsappInput) || window.intlTelInput(whatsappInput);
+        if (iti && typeof iti.isValidNumber === 'function' && !iti.isValidNumber()) {
+          setStatus('Please enter a valid WhatsApp number (including country code).');
+          return;
+        }
+        fullNumber = iti && typeof iti.getNumber === 'function' ? iti.getNumber() : fullNumber;
+      } catch (err) {
+        console.warn('intl-tel-input check failed:', err);
+      }
+    }
+
+    const payload = {
+      secret: SECRET_TOKEN,
+      firstName, lastName, email, whatsapp: fullNumber, message
+    };
+
+    setStatus('Sending…');
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(()=>controller.abort(), 20000);
+
+      const resp = await fetch(WEB_APP_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+      clearTimeout(timeout);
+
+      const text = await resp.text().catch(()=>null);
+      let json = null;
+      try { json = text ? JSON.parse(text) : null; } catch(e){ console.warn('resp not JSON', text); }
+
+      console.log('Fetch result', resp.status, text || json);
+      if (resp.ok && json && json.status === 'success') {
+        setStatus('Thank you! Your message has been sent.');
+        form.reset();
+        // if intl-tel-input instance exists, clear it
+        try { if (whatsappInput) { const inst = window.intlTelInputGlobals.getInstance(whatsappInput); inst && inst.setNumber && inst.setNumber(''); } } catch(e){}
+      } else {
+        const messageText = (json && json.message) || text || `Server error (status ${resp.status})`;
+        setStatus('Error sending form: ' + messageText);
+      }
+    } catch (err) {
+      console.error('Submit error', err);
+      if (err.name === 'AbortError') setStatus('Request timed out. Try again.');
+      else setStatus('Error sending form. Check console/network for details.');
+    }
+  });
+
+  // small startup log
+  console.log('Contact form JS attached. Alpine present?', typeof Alpine !== 'undefined');
+})();
+</script>
+
 
       </div>
     </section>
@@ -1136,80 +1258,7 @@
     });
 </script>
 
-<script>
-  function contactForm() {
-    return {
-      firstName: '',
-      lastName: '',
-      email: '',
-      whatsapp: '',
-      message: '',
-      iti: null,
-      WEB_APP_URL: "https://script.google.com/macros/s/AKfycbzZ1AJRmySxR8nssDkNDYuUL6NfOv9vh904_YaDo-ZVU12NTl3nDdWB0PLV2NbaUDY6/exec", // <-- replace
-      SECRET_TOKEN: "fQM7PxRBOqPtyE18mpe1s0ZtteEicajMhUJhT8sybCmSKxR2xFfC8tPdiotBuYVR", // <-- must match script
 
-      initialize() {
-        const input = document.querySelector("#whatsapp");
-        this.iti = window.intlTelInput(input, {
-          initialCountry: "auto",
-          geoIpLookup: function (callback) {
-            fetch("https://ipapi.co/json")
-              .then(res => res.json())
-              .then(data => callback(data.country_code))
-              .catch(() => callback("IN"));
-          },
-          utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
-        });
-      },
-
-      async submitForm() {
-        try {
-          const fullNumber = this.iti.getNumber();
-          if (!this.iti.isValidNumber()) {
-            alert("Please enter a valid WhatsApp number including country code.");
-            return;
-          }
-
-          const payload = {
-            secret: this.SECRET_TOKEN,
-            firstName: this.firstName,
-            lastName: this.lastName,
-            email: this.email,
-            whatsapp: fullNumber,
-            message: this.message
-          };
-
-          const resp = await fetch(this.WEB_APP_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-
-          // Note: response may be empty if Apps Script returns content but no CORS headers.
-          const json = await resp.json().catch(() => null);
-
-          if (resp.ok && json && json.status === "success") {
-            alert("Thank you! Your message has been sent.");
-            // clear fields
-            this.firstName = '';
-            this.lastName = '';
-            this.email = '';
-            this.whatsapp = '';
-            this.message = '';
-            if (this.iti) this.iti.setNumber('');
-          } else {
-            // show message if available
-            const msg = (json && json.message) || `Server error (status ${resp.status}).`;
-            alert("Error: " + msg);
-          }
-        } catch (err) {
-          console.error(err);
-          alert("Error sending form. Please check console and try again.");
-        }
-      }
-    }
-  }
-</script>
 
 
 <script>
