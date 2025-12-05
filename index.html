@@ -1,69 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Intellidea - Insight to Innovate for Impact</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Intellidea — Insight to Innovate for Impact</title>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                        display: ['"Wix Madefor Display"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            blue: '#2C466D',   /* Brand Navy */
-                            yellow: '#F9C100', /* Brand Yellow */
-                            dark: '#1a2c45'    /* Darker shade for footer/hovers */
-                        }
-                    }
-                }
+  <!-- Primary SEO -->
+  <meta name="description" content="Intellidea provides CXO-level advisory, leadership development and execution support — enabling individuals, entrepreneurs and enterprises to transform and grow." />
+  <!-- meta keywords are optional / mostly ignored by search engines, but some legacy systems still use them -->
+  <meta name="keywords" content="CXO advisory, executive advisory services, leadership development, interim CEO, board advisory, enterprise transformation, business strategy consultants, startup mentorship India, SME growth" />
+  <link rel="canonical" href="https://intellidea.co.in/" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Intellidea — Insight to Innovate for Impact" />
+  <meta property="og:description" content="CXO-level advisory, leadership development & hands-on execution support for individuals, entrepreneurs and enterprises." />
+  <meta property="og:image" content="https://intellidea.co.in/intellidea.png" />
+  <meta property="og:url" content="https://intellidea.co.in/" />
+  <meta property="og:site_name" content="Intellidea" />
+
+
+  <!-- Structured data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Intellidea",
+    "url": "https://intellidea.co.in",
+    "logo": "https://intellidea.co.in/intellidea.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/intellidea",
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+91-9082 378 708",
+      "contactType": "customer service",
+      "areaServed": "IN"
+    }]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- (Your existing scripts / fonts / styles below) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            display: ['"Wix Madefor Display"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              blue: '#2C466D',
+              yellow: '#F9C100',
+              dark: '#1a2c45'
             }
+          }
         }
-    </script>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-        }
-        
-        /* Hero Section Container */
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-        }
+      }
+    }
+  </script>
 
-        /* Video Background Styling */
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        /* Whatsapp Float Animation */
-        .whatsapp-float {
-            animation: pulse-green 2s infinite;
-        }
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-    </style>
+  <style>
+    body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+    .hero-section { position: relative; height: 100vh; width: 100%; overflow: hidden; }
+    .hero-video { position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-2; }
+    .whatsapp-float { animation: pulse-green 2s infinite; }
+    @keyframes pulse-green {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+  </style>
 </head>
+
 <body class="bg-gray-50 text-brand-blue">
 
     <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-brand-blue shadow-md" id="navbar">
