@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Contact Test</title></head>
+<body>
+  <h2>Contact Test</h2>
+  <form id="testForm">
+    <input name="firstName" placeholder="First name" /><br/>
+    <input name="lastName" placeholder="Last name" /><br/>
+    <input name="email" placeholder="Email" /><br/>
+    <input id="wh" name="whatsapp" placeholder="WhatsApp" /><br/>
+    <textarea name="message" placeholder="Message"></textarea><br/>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="status"></div>
+
+<script>
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzZ1AJRmySxR8nssDkNDYuUL6NfOv9vh904_YaDo-ZVU12NTl3nDdWB0PLV2NbaUDY6/exec"; // <<-- replace
+  const form = document.getElementById('testForm');
+  const status = document.getElementById('status');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    status.textContent = 'Sending...';
+    const fd = new FormData(form);
+    const obj = {};
+    fd.forEach((v,k)=>obj[k]=v);
+    try {
+      const r = await fetch(WEB_APP_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(obj) });
+      const text = await r.text();
+      status.textContent = 'Response: ' + r.status + ' — ' + text;
+      console.log('response', r, text);
+    } catch(err) {
+      status.textContent = 'Fetch error: see console';
+      console.error(err);
+    }
+  });
+</script>
+</body>
+</html>
