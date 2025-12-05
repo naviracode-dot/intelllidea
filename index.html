@@ -932,257 +932,285 @@
 
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-6">
     <!-- Brochure 1 -->
-    <div>
-      <div class="aspect-[16/10] w-full">
-        <iframe style="width:550px;height:350px" src="https://online.anyflip.com/ryhrt/sskr/index.html"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe>
+    <div class="flex flex-col items-center">
+      <div class="w-full rounded-xl overflow-hidden shadow-sm" style="max-width:900px;">
+        <!-- responsive wrapper: 16:10 -->
+        <div class="relative" style="padding-top:62.5%;">
+          <iframe class="absolute inset-0 w-full h-full" src="https://online.anyflip.com/ryhrt/sskr/index.html"
+            frameborder="0" allowtransparency="true" allowfullscreen loading="lazy" title="Brochure 1"></iframe>
+        </div>
       </div>
-      <button onclick="openModal(1)" class="mt-4 bg-[#2C466D] text-white px-6 py-2 rounded-xl hover:bg-[#2C466D] transition">Email Brochure</button>
+
+      <button onclick="openModal(1)"
+        class="mt-4 bg-[#2C466D] text-white px-6 py-2 rounded-xl hover:brightness-90 transition">Email Brochure</button>
     </div>
 
     <!-- Brochure 2 -->
-    <div>
-      <div class="aspect-[16/10] w-full">
-        <iframe style="width:550px;height:350px" src="https://online.anyflip.com/ryhrt/xzmo/index.html"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe>
+    <div class="flex flex-col items-center">
+      <div class="w-full rounded-xl overflow-hidden shadow-sm" style="max-width:900px;">
+        <div class="relative" style="padding-top:62.5%;">
+          <iframe class="absolute inset-0 w-full h-full" src="https://online.anyflip.com/ryhrt/xzmo/index.html"
+            frameborder="0" allowtransparency="true" allowfullscreen loading="lazy" title="Brochure 2"></iframe>
+        </div>
       </div>
-      <button onclick="openModal(2)" class="mt-4 bg-[#2C466D] text-white px-6 py-2 rounded-xl hover:bg-[#2C466D] transition">Email Brochure</button>
+
+      <button onclick="openModal(2)"
+        class="mt-4 bg-[#2C466D] text-white px-6 py-2 rounded-xl hover:brightness-90 transition">Email Brochure</button>
     </div>
 
     <!-- Video 1 -->
-    <div>
-      <div class="aspect-video w-full">
-        <iframe class="w-full h-full rounded-xl shadow-md" src="https://www.youtube.com/embed/yd2yKDqwbU0?si=RZEWX0hq65JYwIXy" frameborder="0" allowfullscreen></iframe>
+    <div class="w-full flex items-center justify-center">
+      <div class="aspect-video w-full rounded-xl overflow-hidden shadow-md" style="max-width:900px;">
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/yd2yKDqwbU0?si=RZEWX0hq65JYwIXy"
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy" title="Video 1"></iframe>
       </div>
     </div>
 
     <!-- Video 2 -->
-    <div>
-      <div class="aspect-video w-full">
-        <iframe class="w-full h-full rounded-xl shadow-md" src="https://www.youtube.com/embed/dncdU1b3ugM?si=uwHtWtEvg-uubBZR" frameborder="0" allowfullscreen></iframe>
+    <div class="w-full flex items-center justify-center">
+      <div class="aspect-video w-full rounded-xl overflow-hidden shadow-md" style="max-width:900px;">
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/dncdU1b3ugM?si=uwHtWtEvg-uubBZR"
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy" title="Video 2"></iframe>
       </div>
     </div>
   </div>
 
   <!-- Popup Form Modal -->
-  <div id="formModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
-    <div class="bg-white p-6 rounded-xl w-[90%] max-w-md relative shadow-xl">
-      <button onclick="closeModal()" class="absolute top-2 right-4 text-gray-600 text-2xl">&times;</button>
+  <div id="formModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 items-center justify-center px-4">
+    <div class="bg-white p-6 rounded-xl w-full max-w-md relative shadow-xl">
+      <button id="modalCloseBtn" class="absolute top-3 right-4 text-gray-600 text-2xl" aria-label="Close">&times;</button>
       <h3 class="text-2xl font-semibold text-[#2C466D] mb-4">Enter Your Details to Download</h3>
-      <form id="brochureForm">
-        <input type="text" name="name" placeholder="Name" required class="w-full mb-3 p-2 border rounded">
-        <input type="text" name="occupation" placeholder="Occupation" required class="w-full mb-3 p-2 border rounded">
-        <input type="tel" name="contact" placeholder="Contact Number" required class="w-full mb-3 p-2 border rounded">
-        <input type="email" name="email" placeholder="Email ID" required class="w-full mb-3 p-2 border rounded">
-        <input type="hidden" name="brochure" id="brochureType">
-        <button type="submit" class="bg-[#2C466D] w-full text-white py-2 rounded-xl hover:bg-[#2C466D transition">Submit & Email</button>
+
+      <form id="brochureForm" class="space-y-3">
+        <input type="text" name="name" placeholder="Name" required class="w-full p-2 border rounded" />
+        <input type="text" name="occupation" placeholder="Occupation" class="w-full p-2 border rounded" />
+        <input type="tel" name="contact" placeholder="Contact Number" required class="w-full p-2 border rounded" />
+        <input type="email" name="email" placeholder="Email ID" required class="w-full p-2 border rounded" />
+        <input type="hidden" name="brochure" id="brochureType" value="" />
+        <button type="submit" id="brochureSubmitBtn"
+          class="bg-[#2C466D] w-full text-white py-2 rounded-xl hover:brightness-90 transition">Submit & Email</button>
       </form>
     </div>
   </div>
 </section>
 
 <script>
-  let selectedBrochure = '';
+  // keep track of selected brochure index
+  let selectedBrochure = 1;
 
+  // open modal and set brochure type
   function openModal(brochureNumber) {
-    document.getElementById("formModal").classList.remove("hidden");
     selectedBrochure = brochureNumber;
+    const modal = document.getElementById("formModal");
     document.getElementById("brochureType").value = "Brochure " + brochureNumber;
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    // lock scroll
+    document.documentElement.style.overflow = 'hidden';
+    // focus first input
+    setTimeout(() => document.querySelector('#brochureForm input[name="name"]').focus(), 50);
   }
 
   function closeModal() {
-    document.getElementById("formModal").classList.add("hidden");
+    const modal = document.getElementById("formModal");
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.documentElement.style.overflow = '';
   }
 
-  document.getElementById("brochureForm").addEventListener("submit", function(e) {
+  // close on backdrop click (only if clicking outside modal content)
+  document.getElementById('formModal').addEventListener('click', function (e) {
+    if (e.target === this) closeModal();
+  });
+
+  // close on Esc
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // close button
+  document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+
+  // brochure links - update paths if needed
+  const brochureLinks = {
+    1: "assets/downloads/Intellidea.pdf",
+    2: "assets/downloads/IntelliWise.pdf"
+  };
+
+  // handle form submit
+  document.getElementById("brochureForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const formData = new FormData(this);
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // small client-side validation (email + contact)
+    const email = formData.get('email')?.trim();
+    const contact = formData.get('contact')?.trim();
+    const name = formData.get('name')?.trim();
+    if (!name || !email || !contact) {
+      alert('Please fill the required fields (Name, Contact, Email).');
+      return;
+    }
+
+    // disable submit button to prevent double submits
+    const submitBtn = document.getElementById('brochureSubmitBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    // POST to your Apps Script endpoint (FormData works fine for server-side scripts)
     fetch("https://script.google.com/macros/s/AKfycbyQ9_dhQx5LvTHeXerqfH7v_-hYxhSCQu0zHdcz-Rt6Tca8lYwo0sfZvrZv5aewU7e0Rw/exec", {
       method: "POST",
       body: formData
     })
-    .then(() => {
-      const brochureLinks = {
-        1: "assets/downloads/Intellidea.pdf",
-        2: "assets/downloads/IntelliWise.pdf"
-      };
-      window.open(brochureLinks[selectedBrochure], '_blank');
+    .then(response => {
+      // even if server returns non-JSON, proceed to open brochure
+      // (you can inspect response.status if you want to show errors)
+      // open brochure in new tab/window
+      const link = brochureLinks[selectedBrochure];
+      if (link) window.open(link, '_blank');
+      alert('Thank you! The brochure should open in a new tab and will be emailed to you shortly.');
+      form.reset();
       closeModal();
     })
     .catch((error) => {
-      alert("Something went wrong. Please try again.");
-      console.error(error);
+      console.error('Brochure form submit error:', error);
+      alert("Something went wrong. Please try again later.");
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit & Email';
     });
   });
 </script>
 
 
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-[#2C466D] text-white">
-      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start">
-        
-        <!-- Left Side -->
-        <div>
-          <h3 class="text-lg text-[#fff] font-semibold mb-4">Reach out to us or learn more about our services</h3>
-          <div class="mb-6">
-            <p class="font-bold">Corporate Office:</p>
-            <p>Innov8, Times Square, A Wing, 4th Floor, Marol, Andheri Kurla Road,<br>Andheri East, Mumbai 400059</p>
-          </div>
-          <div class="mb-6">
-            <p class="font-bold">Regd. Office:</p>
-            <p>EMP 47/1903, Thakur Village, Kandivali East, Mumbai 400101</p>
-          </div>
-          <div class="flex items-center gap-3 mb-4">
-            <i class="fas fa-phone-alt text-[#F9C100] w-5 h-5 flex items-center justify-center"></i>
-            <span class="text-white">+91 9082 378 708</span>
-          </div>
-          <div class="flex items-center gap-3 mb-4">
-            <i class="fas fa-envelope text-[#F9C100] w-5 h-5 flex items-center justify-center"></i>
-            <span class="text-white">hello@intellidea.co.in</span>
-          </div>
-        </div>
+<!-- hide Alpine-controlled elements until Alpine boots -->
+<style>
+  [x-cloak] { display: none !important; }
+</style>
 
-        <!-- Right Side: Contact Form -->
-<div x-data="contactForm()" x-init="initialize()" class="max-w-xl">
-  <h3 class="text-white font-semibold text-lg mb-4">Ready to Take Your Business to the Next Level?</h3>
+<!-- Contact Section -->
+<!-- Contact Section (fixed & responsive) -->
+<section id="contact" class="py-16 bg-[#2C466D] text-white">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+    <!-- Left Side -->
+    <div class="space-y-6">
+      <h3 class="text-lg text-white font-semibold mb-2">Reach out to us or learn more about our services</h3>
 
-  <!-- status message -->
-  <div x-show="statusMessage" x-text="statusMessage" class="mb-3 text-sm"></div>
+      <div>
+        <p class="font-bold">Corporate Office:</p>
+        <p class="mt-1">Innov8, Times Square, A Wing, 4th Floor, Marol, Andheri Kurla Road,<br>Andheri East, Mumbai 400059</p>
+      </div>
 
-  <form @submit.prevent="submitForm" class="space-y-4" novalidate>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <input type="text" x-model="firstName" required placeholder="First name"
-             class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
-      <input type="text" x-model="lastName" required placeholder="Last name"
-             class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
+      <div>
+        <p class="font-bold">Regd. Office:</p>
+        <p class="mt-1">EMP 47/1903, Thakur Village, Kandivali East, Mumbai 400101</p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <i class="fas fa-phone-alt text-[#F9C100] w-5 h-5 flex items-center justify-center"></i>
+        <span class="text-white">+91 9082 378 708</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <i class="fas fa-envelope text-[#F9C100] w-5 h-5 flex items-center justify-center"></i>
+        <span class="text-white">hello@intellidea.co.in</span>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <input type="email" x-model="email" required placeholder="Email"
-             class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
-      <!-- IMPORTANT: added x-model="whatsapp" so Alpine keeps the value in sync -->
-      <input id="whatsapp" x-model="whatsapp" type="tel" required placeholder="WhatsApp Number"
-             class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors" />
+    <!-- Right Side: Contact Form -->
+    <div class="w-full flex flex-col">
+      <div class="w-full">
+        <h3 class="text-white font-semibold text-lg mb-4">Ready to Take Your Business to the Next Level?</h3>
+
+        <div id="statusMessage" class="mb-3 text-sm text-[#F9C100]"></div>
+
+        <form id="contactForm" class="space-y-4 w-full" novalidate>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input name="firstName" required placeholder="First name"
+              class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100]" />
+
+            <input name="lastName" required placeholder="Last name"
+              class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100]" />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="email" name="email" required placeholder="Email"
+              class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100]" />
+
+            <input name="whatsapp" required placeholder="WhatsApp Number"
+              class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100]" />
+          </div>
+
+          <textarea name="message" required rows="4" placeholder="Message"
+            class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100]"></textarea>
+
+          <div class="flex items-center">
+            <button type="submit" id="submitBtn"
+              class="ml-auto border border-[#F9C100] text-[#F9C100] px-6 py-2 rounded-full hover:bg-[#F9C100] hover:text-[#2C466D] transition duration-300 font-bold uppercase tracking-wide">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
+</section>
 
-    <textarea x-model="message" required rows="4" placeholder="Message"
-              class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-[#F9C100] focus:outline-none focus:border-[#F9C100] transition-colors"></textarea>
-
-    <button type="submit"
-            :disabled="sending"
-            :class="sending ? 'opacity-60 cursor-not-allowed' : ''"
-            class="border border-[#F9C100] text-[#F9C100] px-6 py-2 rounded-full hover:bg-[#F9C100] hover:text-[#2C466D] transition duration-300 font-bold uppercase tracking-wide">
-      <span x-show="!sending">Submit</span>
-      <span x-show="sending">Sending…</span>
-    </button>
-  </form>
-</div>
-
-<!-- keep your existing HTML (inputs with ids) — only replace the script below -->
 <script>
-(function(){
-  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzZ1AJRmySxR8nssDkNDYuUL6NfOv9vh904_YaDo-ZVU12NTl3nDdWB0PLV2NbaUDY6/exec";
-  const SECRET_TOKEN = "fQM7PxRBOqPtyE18mpe1s0ZtteEicajMhUJhT8sybCmSKxR2xFfC8tPdiotBuYVR";
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault(); // prevent reload
 
-  const form = document.querySelector('form');
-  const statusDiv = document.querySelector('[x-show="statusMessage"]') || (()=>{ const d=document.createElement('div'); form.parentNode.insertBefore(d, form); return d; })();
+  const status = document.getElementById("statusMessage");
+  const form = e.target;
 
-  function setStatus(msg){
-    statusDiv.textContent = msg;
-    console.log('[contactForm status]', msg);
+  status.textContent = "Sending…";
+
+  // Collect form values
+  const payload = {
+    firstName: form.firstName.value.trim(),
+    lastName: form.lastName.value.trim(),
+    email: form.email.value.trim(),
+    whatsapp: form.whatsapp.value.trim(),
+    message: form.message.value.trim()
+  };
+
+  // Basic validation
+  if (!payload.firstName || !payload.lastName || !payload.email || !payload.message) {
+    status.textContent = "Please fill all required fields.";
+    return;
   }
 
-  function isValidEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+  try {
+    const resp = await fetch("https://formspree.io/f/manrbpoz", {
+      method: "POST",
+      headers: { 
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
 
-  // Grab inputs by model or id (support both)
-  const firstInput = document.querySelector('[x-model="firstName"]') || document.querySelector('input[name="firstName"]');
-  const lastInput  = document.querySelector('[x-model="lastName"]')  || document.querySelector('input[name="lastName"]');
-  const emailInput = document.querySelector('[x-model="email"]')     || document.querySelector('input[type="email"]');
-  const whatsappInput = document.querySelector('#whatsapp') || document.querySelector('[x-model="whatsapp"]') || null;
-  const messageInput = document.querySelector('[x-model="message"]') || document.querySelector('textarea');
-
-  if (!form) { console.error('Contact form not found'); return; }
-
-  form.addEventListener('submit', async function(e){
-    e.preventDefault(); // prevent reload no matter what
-    setStatus('');
-
-    const firstName = firstInput ? firstInput.value.trim() : '';
-    const lastName  = lastInput  ? lastInput.value.trim() : '';
-    const email     = emailInput ? emailInput.value.trim() : '';
-    const message   = messageInput ? messageInput.value.trim() : '';
-
-    if (!firstName || !lastName || !email || !message) {
-      setStatus('Please fill all required fields.');
-      return;
-    }
-    if (!isValidEmail(email)) {
-      setStatus('Please enter a valid email address.');
-      return;
+    if (resp.ok) {
+      alert("Submission successful!");
+      status.textContent = "Thank you! Your message has been sent.";
+      form.reset();
+    } else {
+      status.textContent = "Error sending form. Please try again.";
     }
 
-    // phone handling — prefer intl-tel-input if present
-    let fullNumber = whatsappInput ? whatsappInput.value.trim() : '';
-    if (window.intlTelInput && whatsappInput) {
-      try {
-        const iti = window.intlTelInputGlobals.getInstance(whatsappInput) || window.intlTelInput(whatsappInput);
-        if (iti && typeof iti.isValidNumber === 'function' && !iti.isValidNumber()) {
-          setStatus('Please enter a valid WhatsApp number (including country code).');
-          return;
-        }
-        fullNumber = iti && typeof iti.getNumber === 'function' ? iti.getNumber() : fullNumber;
-      } catch (err) {
-        console.warn('intl-tel-input check failed:', err);
-      }
-    }
-
-    const payload = {
-      secret: SECRET_TOKEN,
-      firstName, lastName, email, whatsapp: fullNumber, message
-    };
-
-    setStatus('Sending…');
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(()=>controller.abort(), 20000);
-
-      const resp = await fetch(WEB_APP_URL, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(payload),
-        signal: controller.signal
-      });
-      clearTimeout(timeout);
-
-      const text = await resp.text().catch(()=>null);
-      let json = null;
-      try { json = text ? JSON.parse(text) : null; } catch(e){ console.warn('resp not JSON', text); }
-
-      console.log('Fetch result', resp.status, text || json);
-      if (resp.ok && json && json.status === 'success') {
-        setStatus('Thank you! Your message has been sent.');
-        form.reset();
-        // if intl-tel-input instance exists, clear it
-        try { if (whatsappInput) { const inst = window.intlTelInputGlobals.getInstance(whatsappInput); inst && inst.setNumber && inst.setNumber(''); } } catch(e){}
-      } else {
-        const messageText = (json && json.message) || text || `Server error (status ${resp.status})`;
-        setStatus('Error sending form: ' + messageText);
-      }
-    } catch (err) {
-      console.error('Submit error', err);
-      if (err.name === 'AbortError') setStatus('Request timed out. Try again.');
-      else setStatus('Error sending form. Check console/network for details.');
-    }
-  });
-
-  // small startup log
-  console.log('Contact form JS attached. Alpine present?', typeof Alpine !== 'undefined');
-})();
+  } catch (err) {
+    console.error(err);
+    status.textContent = "Network error. Please try again.";
+  }
+});
 </script>
 
 
-      </div>
-    </section>
 
 <!-- (rest of your long page continues — unchanged) -->
 <!-- ... OMITTED FOR BREVITY (keeps identical content from your original file) ... -->
