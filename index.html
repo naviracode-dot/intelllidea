@@ -904,7 +904,7 @@
 
                 <!-- Client 4 -->
                 <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex justify-center items-center h-32 p-4">
-                    <img src="./assets/Kenilworth Logo.jpegd" alt="Client 4 Logo" class="max-h-full max-w-full object-contain">
+                    <img src="./assets/Kenilworth Logo.jpeg" alt="Client 4 Logo" class="max-h-full max-w-full object-contain">
                 </div>
 
                 <!-- Client 5 -->
@@ -1137,72 +1137,80 @@
 </script>
 
 <script>
-    // Alpine Logic for Contact Form (kept unchanged)
-    function contactForm() {
-        return {
-            firstName: '',
-            lastName: '',
-            email: '',
-            whatsapp: '',   // This will hold the raw input but we won't send this directly
-            message: '',
-            iti: null,      // To store the intlTelInput instance
+  function contactForm() {
+    return {
+      firstName: '',
+      lastName: '',
+      email: '',
+      whatsapp: '',
+      message: '',
+      iti: null,
+      WEB_APP_URL: "https://script.google.com/macros/s/AKfycbzZ1AJRmySxR8nssDkNDYuUL6NfOv9vh904_YaDo-ZVU12NTl3nDdWB0PLV2NbaUDY6/exec", // <-- replace
+      SECRET_TOKEN: "fQM7PxRBOqPtyE18mpe1s0ZtteEicajMhUJhT8sybCmSKxR2xFfC8tPdiotBuYVR", // <-- must match script
 
-            initialize() {
-                const input = document.querySelector("#whatsapp");
-                this.iti = window.intlTelInput(input, {
-                    initialCountry: "auto",
-                    geoIpLookup: function (callback) {
-                        fetch("https://ipapi.co/json")
-                        .then(res => res.json())
-                        .then(data => callback(data.country_code))
-                        .catch(() => callback("IN"));
-                    },
-                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
-                });
-            },
+      initialize() {
+        const input = document.querySelector("#whatsapp");
+        this.iti = window.intlTelInput(input, {
+          initialCountry: "auto",
+          geoIpLookup: function (callback) {
+            fetch("https://ipapi.co/json")
+              .then(res => res.json())
+              .then(data => callback(data.country_code))
+              .catch(() => callback("IN"));
+          },
+          utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+        });
+      },
 
-            submitForm() {
-                // Get full international number from intl-tel-input instance
-                const fullNumber = this.iti.getNumber();
+      async submitForm() {
+        try {
+          const fullNumber = this.iti.getNumber();
+          if (!this.iti.isValidNumber()) {
+            alert("Please enter a valid WhatsApp number including country code.");
+            return;
+          }
 
-                if (!this.iti.isValidNumber()) {
-                    alert("Please enter a valid WhatsApp number including country code.");
-                    return;
-                }
+          const payload = {
+            secret: this.SECRET_TOKEN,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+            whatsapp: fullNumber,
+            message: this.message
+          };
 
-                const data = {
-                    firstName: this.firstName,
-                    lastName: this.lastName,
-                    email: this.email,
-                    whatsapp: fullNumber,   // send full international number here
-                    message: this.message
-                };
+          const resp = await fetch(this.WEB_APP_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
 
-                fetch("https://script.google.com/macros/s/AKfycbzMhWX6HQx02IUoGYfPSJZe7anc_E0hlnYUoxqHIiWopQ6yxSbjPfhpvK8-BqJBekqJ/exec", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(data),
-                    mode: "no-cors" // Added no-cors to prevent CORS errors since Google Script often has issues with direct cross-origin requests
-                })
-                .then(() => {
-                    // Since mode is no-cors, we can't read the response, so we assume success if no error is thrown
-                    alert("Thank you! Your message has been sent.");
-                    // Clear all fields
-                    this.firstName = '';
-                    this.lastName = '';
-                    this.email = '';
-                    this.whatsapp = '';
-                    this.message = '';
-                    this.iti.setNumber(''); // Clear the intl-tel-input field as well
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert("Error sending form. Please try again later.");
-                });
-            }
+          // Note: response may be empty if Apps Script returns content but no CORS headers.
+          const json = await resp.json().catch(() => null);
+
+          if (resp.ok && json && json.status === "success") {
+            alert("Thank you! Your message has been sent.");
+            // clear fields
+            this.firstName = '';
+            this.lastName = '';
+            this.email = '';
+            this.whatsapp = '';
+            this.message = '';
+            if (this.iti) this.iti.setNumber('');
+          } else {
+            // show message if available
+            const msg = (json && json.message) || `Server error (status ${resp.status}).`;
+            alert("Error: " + msg);
+          }
+        } catch (err) {
+          console.error(err);
+          alert("Error sending form. Please check console and try again.");
         }
+      }
     }
+  }
 </script>
+
 
 <script>
     // Mobile Menu Toggle Logic (uses the same IDs as before; works with generated links)
