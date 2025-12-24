@@ -5,45 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Intellidea - Insight to Innovate for Impact</title>
     <link rel="stylesheet" href="./dist/output.css">
+    <link rel="canonical" href="https://www.intellidea.co.in/">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-        }
-        
-        /* Hero Section Container */
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        /* Video Background Styling */
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        /* Whatsapp Float Animation */
-        .whatsapp-float {
-            animation: pulse-green 2s infinite;
-        }
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-    </style>
+    <meta name="description" content="
+We deliver strategic guidance to drive efficiency and growth; ensuring businesses, leaders and aspiring entrepreneurs overcome their unique challenges.
+">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Intellidea Consultancy Services Pvt. Ltd.",
+  "url": "https://www.intellidea.co.in",
+  "logo": "https://www.intellidea.co.in/intellidea.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-9082378708",
+    "contactType": "customer service"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Innov8, Times Square, Andheri East",
+    "addressLocality": "Mumbai",
+    "postalCode": "400059",
+    "addressCountry": "IN"
+  }
+}
+</script>
 </head>
 <body class="bg-gray-50 text-[#2C466D]">
 
@@ -913,39 +902,71 @@
 <section id="resources" class="py-16 bg-gray-50 text-center">
   <h2 class="text-4xl font-bold text-[#2C466D] mb-12">Resources</h2>
 
-  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-4 sm:px-6">
+
     <!-- Brochure 1 -->
-    <div>
-      <div class="aspect-[16/10] w-full">
-        <iframe style="width:550px;height:350px" src="https://online.anyflip.com/ryhrt/sskr/index.html"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe>
+    <div class="flex flex-col items-center">
+      <div class="w-full aspect-[16/10] rounded-xl overflow-hidden shadow-md bg-white">
+        <iframe
+          src="https://online.anyflip.com/ryhrt/sskr/index.html"
+          class="w-full h-full border-0"
+          scrolling="no"
+          allowfullscreen
+        ></iframe>
       </div>
-      <button onclick="openModal(1)" class="mt-4 bg-[#2C466D] text-white px-6 py-2 rounded-xl hover:bg-[#2C466D] transition">Email Brochure</button>
+
+      <button
+        onclick="openModal(1)"
+        class="mt-4 bg-[#2C466D] text-white px-6 py-2 rounded-xl hover:bg-[#1f3556] transition"
+      >
+        Email Brochure
+      </button>
     </div>
 
     <!-- Brochure 2 -->
-    <div>
-      <div class="aspect-[16/10] w-full">
-        <iframe style="width:550px;height:350px" src="https://online.anyflip.com/ryhrt/xzmo/index.html"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe>
+    <div class="flex flex-col items-center">
+      <div class="w-full aspect-[16/10] rounded-xl overflow-hidden shadow-md bg-white">
+        <iframe
+          src="https://online.anyflip.com/ryhrt/xzmo/index.html"
+          class="w-full h-full border-0"
+          scrolling="no"
+          allowfullscreen
+        ></iframe>
       </div>
-      <button onclick="openModal(2)" class="mt-4 bg-[#2C466D] text-white px-6 py-2 rounded-xl hover:bg-[#2C466D] transition">Email Brochure</button>
+
+      <button
+        onclick="openModal(2)"
+        class="mt-4 bg-[#2C466D] text-white px-6 py-2 rounded-xl hover:bg-[#1f3556] transition"
+      >
+        Email Brochure
+      </button>
     </div>
 
     <!-- Video 1 -->
-    <div>
-      <div class="aspect-video w-full">
-        <iframe class="w-full h-full rounded-xl shadow-md" src="https://www.youtube.com/embed/yd2yKDqwbU0?si=RZEWX0hq65JYwIXy" frameborder="0" allowfullscreen></iframe>
+    <div class="flex flex-col items-center">
+      <div class="w-full aspect-video rounded-xl overflow-hidden shadow-md">
+        <iframe
+          class="w-full h-full border-0"
+          src="https://www.youtube.com/embed/yd2yKDqwbU0?si=RZEWX0hq65JYwIXy"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
 
     <!-- Video 2 -->
-    <div>
-      <div class="aspect-video w-full">
-        <iframe class="w-full h-full rounded-xl shadow-md" src="https://www.youtube.com/embed/dncdU1b3ugM?si=uwHtWtEvg-uubBZR" frameborder="0" allowfullscreen></iframe>
+    <div class="flex flex-col items-center">
+      <div class="w-full aspect-video rounded-xl overflow-hidden shadow-md">
+        <iframe
+          class="w-full h-full border-0"
+          src="https://www.youtube.com/embed/dncdU1b3ugM?si=uwHtWtEvg-uubBZR"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
+
   </div>
 
-  <!-- Popup Form Modal -->
+  <!-- Popup Form Modal (UNCHANGED) -->
   <div id="formModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
     <div class="bg-white p-6 rounded-xl w-[90%] max-w-md relative shadow-xl">
       <button onclick="closeModal()" class="absolute top-2 right-4 text-gray-600 text-2xl">&times;</button>
@@ -956,11 +977,14 @@
         <input type="tel" name="contact" placeholder="Contact Number" required class="w-full mb-3 p-2 border rounded">
         <input type="email" name="email" placeholder="Email ID" required class="w-full mb-3 p-2 border rounded">
         <input type="hidden" name="brochure" id="brochureType">
-        <button type="submit" class="bg-[#2C466D] w-full text-white py-2 rounded-xl hover:bg-[#2C466D transition">Submit & Email</button>
+        <button type="submit" class="bg-[#2C466D] w-full text-white py-2 rounded-xl hover:bg-[#1f3556] transition">
+          Submit & Email
+        </button>
       </form>
     </div>
   </div>
 </section>
+
 
 <script>
   let selectedBrochure = '';
