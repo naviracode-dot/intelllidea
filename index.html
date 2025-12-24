@@ -4,30 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Intellidea - Insight to Innovate for Impact</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./dist/output.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                        display: ['"Wix Madefor Display"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            blue: '#2C466D',   /* Brand Navy */
-                            yellow: '#F9C100', /* Brand Yellow */
-                            dark: '#1a2c45'    /* Darker shade for footer/hovers */
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -64,9 +45,10 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-brand-blue">
+<body class="bg-gray-50 text-[#2C466D]">
 
-    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-brand-blue shadow-md" id="navbar">
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#2C466D] shadow-md">
+
         <div class="container mx-auto px-4 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
@@ -95,7 +77,7 @@
         </div>
 
         <!-- Mobile menu wrapper; the inner links will be populated dynamically -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-brand-blue border-t border-white/20 absolute w-full left-0 top-20 shadow-xl">
+        <div id="mobile-menu" class="hidden lg:hidden bg-[#2C466D] border-t border-white/20 absolute w-full left-0 top-20 shadow-xl">
             <div id="mobileNav" class="flex flex-col p-4 space-y-4"></div>
         </div>
     </header>
@@ -124,13 +106,13 @@
 
       <!-- action row: Learn More + Unmute (styled the same) -->
       <div class="flex items-center gap-4">
-        <a href="#offerings" id="learnMoreBtn" class="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-brand-blue font-medium text-lg px-8 py-3 rounded-full transition duration-300">
+        <a href="#offerings" id="learnMoreBtn" class="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-[#2C466D] font-medium text-lg px-8 py-3 rounded-full transition duration-300">
           Learn More
         </a>
 
         <!-- Unmute button styled to match Learn More -->
         <button id="audioToggle" aria-pressed="false" aria-label="Unmute video"
-                class="inline-flex items-center gap-3 border-2 border-white text-white hover:bg-white hover:text-brand-blue font-medium text-lg px-6 py-3 rounded-full transition duration-300">
+                class="inline-flex items-center gap-3 border-2 border-white text-white hover:bg-white hover:text-[#2C466D] font-medium text-lg px-6 py-3 rounded-full transition duration-300">
           <i id="audioIcon" class="fa-solid fa-volume-xmark text-lg"></i>
           <span id="audioLabel" class="hidden md:inline">Unmute</span>
           <audio id="heroAudio" src="Corporate RF.mp3" loop></audio>
@@ -189,7 +171,7 @@
       </div>
 
       <div class="bg-white rounded-xl p-8 flex flex-col shadow-lg h-full">
-        <h3 class="font-display font-bold text-[#2C466D] mb-4 leading-tight text-[28px]">IntelliWise</h3>
+        <h3 class="font-display font-bold text-[#2C466D] mb-4 leading-tight text-[28px]"><a href="http://www.intelliwiseacademy.com"> IntelliWise</a></h3>
         <p class="card-body font-sans text-[#2C466D] opacity-90 text-[17px] leading-relaxed mt-2">
           Empower learners with essential training and development programs that enhance knowledge and skills, foster leadership, promote innovation for progress and growth.
         </p>
@@ -212,7 +194,7 @@
 
  <section class="flex flex-col lg:flex-row w-full lg:h-[480px] bg-white">
         <div class="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 lg:p-12 order-1 lg:order-1">
-            <h2 class="font-display font-bold text-brand-blue text-[28px] md:text-[32px] lg:text-[36px] mb-10 md:mb-12 text-center">
+            <h2 class="font-display font-bold text-[#2C466D] text-[28px] md:text-[32px] lg:text-[36px] mb-10 md:mb-12 text-center">
                 Unique Value Proposition
             </h2>
             
@@ -221,25 +203,25 @@
                     <div class="mb-3">
                         <img src="./assets/Tailor - made.png" alt="Strategy Icon" class="w-12 h-12 object-contain">
                     </div>
-                    <p class="font-sans text-brand-blue text-sm md:text-base font-medium max-w-[500px]">Tailor - made strategy and guidance</p>
+                    <p class="font-sans text-[#2C466D] text-sm md:text-base font-medium max-w-[500px]">Tailor - made strategy and guidance</p>
                 </div>
                 <div class="flex flex-col items-center text-center">
                     <div class="mb-3">
                         <img src="./assets/Ideation.png" alt="Ideation Icon" class="w-12 h-12 object-contain">
                     </div>
-                    <p class="font-sans text-brand-blue text-sm md:text-base font-medium max-w-[200px]">Ideation to facilitation</p>
+                    <p class="font-sans text-[#2C466D] text-sm md:text-base font-medium max-w-[200px]">Ideation to facilitation</p>
                 </div>
                 <div class="flex flex-col items-center text-center">
                     <div class="mb-3">
                         <img src="./assets/Panel of Experts.png" alt="Experts Icon" class="w-12 h-12 object-contain">
                     </div>
-                    <p class="font-sans text-brand-blue text-sm md:text-base font-medium max-w-[200px]">A panel of experts with global best practices</p>
+                    <p class="font-sans text-[#2C466D] text-sm md:text-base font-medium max-w-[200px]">A panel of experts with global best practices</p>
                 </div>
                 <div class="flex flex-col items-center text-center">
                     <div class="mb-3">
                         <img src="./assets/Ecosystem.png" alt="Ecosystem Icon" class="w-12 h-12 object-contain">
                     </div>
-                    <p class="font-sans text-brand-blue text-sm md:text-base font-medium max-w-[200px]">Ecosystem for continual learning and growth</p>
+                    <p class="font-sans text-[#2C466D] text-sm md:text-base font-medium max-w-[200px]">Ecosystem for continual learning and growth</p>
                 </div>
             </div>
         </div>
@@ -252,42 +234,42 @@
         <div class="w-full lg:w-1/2 h-64 md:h-96 lg:h-full bg-gray-300 relative">
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop" alt="Skyscrapers" class="w-full h-full object-cover">
         </div>
-        <div class="w-full lg:w-1/2 bg-brand-blue flex flex-col justify-center px-8 py-12 lg:p-20 text-white">
+        <div class="w-full lg:w-1/2 bg-[#2C466D] flex flex-col justify-center px-8 py-12 lg:p-20 text-white">
             <h2 class="font-display font-bold text-[28px] md:text-[32px] lg:text-[42px] mb-8 lg:mb-12">Outcome & Impact</h2>
             <ul class="space-y-6 lg:space-y-8">
                 <li class="flex items-start gap-4">
                     <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
-                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                        <i class="fas fa-check text-[#2C466D] text-xs"></i>
                     </div>
                     <span class="font-sans text-lg lg:text-xl font-medium">Enhanced Performance</span>
                 </li>
                 <li class="flex items-start gap-4">
                     <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
-                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                        <i class="fas fa-check text-[#2C466D] text-xs"></i>
                     </div>
                     <span class="font-sans text-lg lg:text-xl font-medium">Enhanced Presence In Domestic And International Markets</span>
                 </li>
                 <li class="flex items-start gap-4">
                     <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
-                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                        <i class="fas fa-check text-[#2C466D] text-xs"></i>
                     </div>
                     <span class="font-sans text-lg lg:text-xl font-medium">Entrepreneurial Excellence</span>
                 </li>
                 <li class="flex items-start gap-4">
                     <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
-                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                        <i class="fas fa-check text-[#2C466D] text-xs"></i>
                     </div>
                     <span class="font-sans text-lg lg:text-xl font-medium">Capacity Building</span>
                 </li>
                 <li class="flex items-start gap-4">
                     <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
-                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                        <i class="fas fa-check text-[#2C466D] text-xs"></i>
                     </div>
                     <span class="font-sans text-lg lg:text-xl font-medium">Contribution To The Economy</span>
                 </li>
                 <li class="flex items-start gap-4">
                     <div class="mt-1 bg-white rounded-full p-1 min-w-[24px] h-[24px] flex items-center justify-center">
-                        <i class="fas fa-check text-brand-blue text-xs"></i>
+                        <i class="fas fa-check text-[#2C466D] text-xs"></i>
                     </div>
                     <span class="font-sans text-lg lg:text-xl font-medium">Increased Employment Opportunities</span>
                 </li>
@@ -298,7 +280,7 @@
 <section id="collaborative-process" class="w-full bg-white flex flex-col justify-center items-center py-16 px-4 overflow-hidden">
     <div class="container mx-auto max-w-6xl text-center">
         
-        <h2 class="process-item font-display font-bold text-brand-blue text-[22px] md:text-[28px] lg:text-[32px] leading-tight max-w-4xl mx-auto mb-16 opacity-0 translate-y-4 transition-all duration-700 ease-out">
+        <h2 class="process-item font-display font-bold text-[#2C466D] text-[22px] md:text-[28px] lg:text-[32px] leading-tight max-w-4xl mx-auto mb-16 opacity-0 translate-y-4 transition-all duration-700 ease-out">
             We believe in a collaborative approach, offering customized solutions based on the unique challenges and goals of each customer we work with
         </h2>
 
@@ -309,13 +291,13 @@
                 <div class="h-20 w-20 mb-6 flex items-center justify-center">
                     <img src="./assets/idea.png" alt="Initial Assessment" class="h-20 w-20 object-contain">
                 </div>
-                <p class="font-sans text-brand-blue font-medium text-[16px] md:text-lg lg:text-xl text-center">
+                <p class="font-sans text-[#2C466D] font-medium text-[16px] md:text-lg lg:text-xl text-center">
                     Initial Assessment
                 </p>
             </div>
 
             <div class="process-item hidden lg:flex h-20 items-center justify-center opacity-0 translate-x-[-10px] transition-all duration-700 ease-out delay-[400ms]">
-                <i class="fas fa-arrow-right text-brand-blue text-4xl"></i>
+                <i class="fas fa-arrow-right text-[#2C466D] text-4xl"></i>
             </div>
 
             <!-- Step 2 -->
@@ -323,13 +305,13 @@
                 <div class="h-20 w-20 mb-6 flex items-center justify-center">
                     <img src="./assets/Customized.png" alt="Customized Strategy" class="h-20 w-20 object-contain">
                 </div>
-                <p class="font-sans text-brand-blue font-medium text-[16px] md:text-lg lg:text-xl text-center max-w-[230px]">
+                <p class="font-sans text-[#2C466D] font-medium text-[16px] md:text-lg lg:text-xl text-center max-w-[230px]">
                     Customized strategy & Solution Design
                 </p>
             </div>
 
             <div class="process-item hidden lg:flex h-20 items-center justify-center opacity-0 translate-x-[-10px] transition-all duration-700 ease-out delay-[800ms]">
-                <i class="fas fa-arrow-right text-brand-blue text-4xl"></i>
+                <i class="fas fa-arrow-right text-[#2C466D] text-4xl"></i>
             </div>
 
             <!-- Step 3 -->
@@ -337,13 +319,13 @@
                 <div class="h-20 w-20 mb-6 flex items-center justify-center">
                     <img src="./assets/Implementation.png" alt="Implementation" class="h-20 w-20 object-contain">
                 </div>
-                <p class="font-sans text-brand-blue font-medium text-[16px] md:text-lg lg:text-xl text-center">
+                <p class="font-sans text-[#2C466D] font-medium text-[16px] md:text-lg lg:text-xl text-center">
                     Implementation Assistance
                 </p>
             </div>
 
             <div class="process-item hidden lg:flex h-20 items-center justify-center opacity-0 translate-x-[-10px] transition-all duration-700 ease-out delay-[1200ms]">
-                <i class="fas fa-arrow-right text-brand-blue text-4xl"></i>
+                <i class="fas fa-arrow-right text-[#2C466D] text-4xl"></i>
             </div>
 
             <!-- Step 4 -->
@@ -351,7 +333,7 @@
                 <div class="h-20 w-20 mb-6 flex items-center justify-center">
                     <img src="./assets/Hand-holding.png" alt="Ongoing Support" class="h-20 w-20 object-contain">
                 </div>
-                <p class="font-sans text-brand-blue font-medium text-[16px] md:text-lg lg:text-xl text-center max-w-[230px]">
+                <p class="font-sans text-[#2C466D] font-medium text-[16px] md:text-lg lg:text-xl text-center max-w-[230px]">
                     Ongoing hand-holding support
                 </p>
             </div>
@@ -362,7 +344,7 @@
 
 
 
-    <section id="aboutus" class="flex flex-col lg:flex-row w-full lg:h-[543px] bg-brand-blue">
+    <section id="aboutus" class="flex flex-col lg:flex-row w-full lg:h-[543px] bg-[#2C466D]">
         <div class="w-full lg:w-1/2 flex flex-col justify-center px-8 py-12 lg:p-20 text-white order-1">
             <h2 class="font-display font-bold text-[28px] md:text-[32px] lg:text-[42px] mb-6 lg:mb-8">Who we are</h2>
             <p class="font-sans text-sm md:text-base lg:text-[17px] leading-relaxed opacity-90 text-justify">
@@ -378,7 +360,7 @@
   <div class="container mx-auto px-4 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
 
-      <div class="bg-brand-blue text-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col justify-start hover:-translate-y-1 transition-transform duration-300 min-h-[220px] md:min-h-[280px]">
+      <div class="bg-[#2C466D] text-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col justify-start hover:-translate-y-1 transition-transform duration-300 min-h-[220px] md:min-h-[280px]">
         <h3 class="font-display font-bold text-[22px] md:text-[26px] lg:text-[30px] mb-4">
           Our Vision
         </h3>
@@ -387,7 +369,7 @@
         </p>
       </div>
 
-      <div class="bg-brand-blue text-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col justify-start hover:-translate-y-1 transition-transform duration-300 min-h-[220px] md:min-h-[280px]">
+      <div class="bg-[#2C466D] text-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col justify-start hover:-translate-y-1 transition-transform duration-300 min-h-[220px] md:min-h-[280px]">
         <h3 class="font-display font-bold text-[22px] md:text-[26px] lg:text-[30px] mb-4">
           Our Mission
         </h3>
@@ -396,7 +378,7 @@
         </p>
       </div>
 
-      <div class="bg-brand-blue text-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col justify-start hover:-translate-y-1 transition-transform duration-300 min-h-[220px] md:min-h-[280px]">
+      <div class="bg-[#2C466D] text-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col justify-start hover:-translate-y-1 transition-transform duration-300 min-h-[220px] md:min-h-[280px]">
         <h3 class="font-display font-bold text-[22px] md:text-[26px] lg:text-[30px] mb-4">
           Our Purpose
         </h3>
@@ -417,7 +399,7 @@
 
     <div class="w-full lg:w-1/2 flex flex-col justify-center items-center px-8 py-12 lg:p-16 order-2">
         
-        <h2 class="font-display font-bold text-brand-blue text-[28px] md:text-[32px] lg:text-[42px] mb-10 lg:mb-14 text-center">
+        <h2 class="font-display font-bold text-[#2C466D] text-[28px] md:text-[32px] lg:text-[42px] mb-10 lg:mb-14 text-center">
             Our Core Values
         </h2>
 
@@ -428,7 +410,7 @@
                 <div class="mb-4">
                     <img src="./assets/Knowledge.png" alt="Knowledge" class="h-12 w-12 object-contain">
                 </div>
-                <p class="font-sans text-brand-blue font-medium text-base lg:text-lg whitespace-nowrap">
+                <p class="font-sans text-[#2C466D] font-medium text-base lg:text-lg whitespace-nowrap">
                     Knowledge based-insights
                 </p>
             </div>
@@ -438,7 +420,7 @@
                 <div class="mb-4">
                     <img src="./assets/Ethics.png" alt="Ethics" class="h-12 w-12 object-contain">
                 </div>
-                <p class="font-sans text-brand-blue font-medium text-base lg:text-lg">
+                <p class="font-sans text-[#2C466D] font-medium text-base lg:text-lg">
                     Ethics and Integrity
                 </p>
             </div>
@@ -448,7 +430,7 @@
                 <div class="mb-4">
                     <img src="./assets/Excellence.png" alt="Excellence" class="h-12 w-12 object-contain">
                 </div>
-                <p class="font-sans text-brand-blue font-medium text-base lg:text-lg whitespace-nowrap">
+                <p class="font-sans text-[#2C466D] font-medium text-base lg:text-lg whitespace-nowrap">
                     Commitment to Excellence
                 </p>
             </div>
@@ -458,7 +440,7 @@
                 <div class="mb-4">
                     <img src="./assets/Leadership.png" alt="Leadership" class="h-12 w-12 object-contain">
                 </div>
-                <p class="font-sans text-brand-blue font-medium text-base lg:text-lg">
+                <p class="font-sans text-[#2C466D] font-medium text-base lg:text-lg">
                     Leadership to enable<br>and empower
                 </p>
             </div>
@@ -905,7 +887,7 @@
 
                 <!-- Client 4 -->
                 <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex justify-center items-center h-32 p-4">
-                    <img src="./assets/Kenilworth Logo.jpegd" alt="Client 4 Logo" class="max-h-full max-w-full object-contain">
+                    <img src="./assets/Kenilworth Logo.jpeg" alt="Client 4 Logo" class="max-h-full max-w-full object-contain">
                 </div>
 
                 <!-- Client 5 -->
@@ -1103,23 +1085,23 @@
 
         // Desktop: larger menu items
         desktopNav.innerHTML = menuItems.map(item => `
-            <a href="${item.href}" class="text-lg font-semibold text-white hover:text-brand-yellow transition">
+            <a href="${item.href}" class="text-lg font-semibold text-white hover:text-[#F9C100] transition">
                 ${item.name}
             </a>
         `).join("") + `
         <a href="https://calendly.com/hello-intellidea/new-meeting" 
-           class="bg-brand-yellow hover:bg-[#ffcd36] text-brand-blue font-bold text-sm py-2.5 px-6 rounded-sm transition shadow-lg transform hover:scale-105">
+           class="bg-[#F9C100] hover:bg-[#ffcd36] text-[#2C466D] font-bold text-sm py-2.5 px-6 rounded-sm transition shadow-lg transform hover:scale-105">
             Book an appointment
         </a>`;
 
         // Mobile: slightly smaller but still prominent
         mobileNav.innerHTML = menuItems.map(item => `
-            <a href="${item.href}" class="text-base font-semibold text-white py-2 border-b border-white/10 hover:text-brand-yellow transition">
+            <a href="${item.href}" class="text-base font-semibold text-white py-2 border-b border-white/10 hover:text-[##F9C100] transition">
                 ${item.name}
             </a>
         `).join("") + `
         <a href="https://calendly.com/hello-intellidea/new-meeting" 
-           class="bg-brand-yellow text-brand-blue font-bold py-3 text-center rounded mt-2">
+           class="bg-[#F9C100] text-[#2C466D] font-bold py-3 text-center rounded mt-2">
             Book an appointment
         </a>`;
 
