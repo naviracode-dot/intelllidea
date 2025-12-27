@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url>
+    <loc>https://www.intellidea.co.in/</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://www.intellidea.co.in/privacy.html</loc>
+    <priority>0.30</priority>
+  </url>
+
+  <url>
+    <loc>https://www.intellidea.co.in/terms.html</loc>
+    <priority>0.30</priority>
+  </url>
+
+  <url>
+    <loc>https://www.intellidea.co.in/cookie.html</loc>
+    <priority>0.30</priority>
+  </url>
+
+  <!-- Team Pages -->
+  <url>
+    <loc>https://www.intellidea.co.in/team/1.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/2.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/3.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/4.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/5.html</loc>
+    <priority>0.60</priority>
+  </url>
+    <url>
+    <loc>https://www.intellidea.co.in/team/6.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/7.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/8.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/9.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/10.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/11.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/12.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/13.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/14.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/15.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/16.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.intellidea.co.in/team/17.html</loc>
+    <priority>0.60</priority>
+  </url>
+  <!-- Repeat up to 18 -->
+  <url>
+    <loc>https://www.intellidea.co.in/team/18.html</loc>
+    <priority>0.60</priority>
+  </url>
+
+</urlset>
